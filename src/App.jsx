@@ -17,6 +17,11 @@ function App() {
     <>
       <div className="App">
         <AuthToken setToken={setToken} token={token} />
+        <BreedList
+          setBreedList={setBreedList}
+          searchType={searchType}
+          token={token}
+        />
         <AnimalTypes
           searchType={searchType}
           setSearchType={setSearchType}
@@ -28,11 +33,6 @@ function App() {
           token={token}
           searchContent={searchContent}
           setSearchContent={setSearchContent}
-        />
-        <BreedList
-          setBreedList={setBreedList}
-          searchType={searchType}
-          token={token}
         />
         <AnimalTableData searchContent={searchContent}/>
       </div>

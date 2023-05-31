@@ -63,7 +63,6 @@ const AnimalTypes = ({
       const organizationId = animalContentIdx['organization_id']
       const organizationAnimalId = animalContentIdx['organization_animal_id']
       const organizationEmail = animalContentIdx['contact']['email']
-      console.log('what does this look like?', animalPhoto)
 
       let animalsPhotoUrl = animalPhoto
       if (animalsPhotoUrl) {
@@ -112,7 +111,7 @@ const AnimalTypes = ({
   return (
     <div>
         <form onSubmit={handleSearchSubmit}>
-          <label htmlFor="animaltypes">choose animal type</label>
+          <label htmlFor="animaltypes">Choose an animal type!</label><br></br>
           <select
             id="animaltypes"
             value={searchType}

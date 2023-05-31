@@ -25,7 +25,7 @@ export default function AnimalTableData({searchContent}) {
                   <td>
                     {x.city} {x.state}
                   </td>
-                  <td><img src={x.photo} alt="not available" /></td>
+                  <td><img src={x.photo} width='100' height='100' alt="not available" /></td>
                   <td>{x.organization}</td>
                   <td>{x.orgAnimalId}</td>
                   <td>{x.email}</td>

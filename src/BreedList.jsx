@@ -20,12 +20,10 @@ const BreedList = ({token, setBreedList}) => {
           const listOfDogBreeds = dogBreeds[i]["name"];
           breedsList.push(listOfDogBreeds);
         }
-        // console.log('is this finally the breedslist?', breedsList)
         setBreedList(breedsList);
-        console.log(breedsList)
       };
       return (
-        <div style={{paddingBottom:50}}>
+        <div style={{paddingBottom:25}}>
             <button
             onClick={searchBreeds}
             >get breeds</button>

@@ -1,18 +1,30 @@
 const AnimalTypes = ({
+  token,
   searchType,
   setSearchType,
   selectedDogBreed,
-  setSearchLocation,
+  setSelectedDogBreed,
   searchLocation,
-  token,
-  setSearchContent
+  setSearchLocation,
+  breedList,
+  searchContent,
+  setSearchContent,
+  
 }) => {
+
+  var UsaStates = require("usa-states").UsaStates;
+  var usStates = new UsaStates();
+  var statesAbbreviation = usStates.arrayOf("abbreviations");
   const handleSearchChange = (e) => {
     setSearchType(e.target.value);
   };
 
   const handleLocationChange = (e) => {
     setSearchLocation(e.target.value);
+  };
+
+  const handleSelectedDogBreedChange = (e) => {
+    setSelectedDogBreed(e.target.value);
   };
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
@@ -33,6 +45,7 @@ const AnimalTypes = ({
         Authorization: `Bearer ${token}`,
       },
     };
+    
     const res = await fetch(petFinderSearchUrl, options);
     const content = await res.json();
     let animals = [];

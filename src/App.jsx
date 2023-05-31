@@ -3,6 +3,7 @@ import "./App.css";
 import AuthToken from "./AuthToken";
 import BreedList from "./BreedList";
 import AnimalTypes from "./AnimalTypes";
+import AnimalTableData from "./AnimalTableData";
 
 function App() {
   const [token, setToken] = useState("");
@@ -17,13 +18,18 @@ function App() {
       <div className="App">
         <AuthToken setToken={setToken} token={token} />
         <AnimalTypes
-          setSearchType={setSearchType}
           searchType={searchType}
+          setSearchType={setSearchType}
           selectedDogBreed={selectedDogBreed}
-          setSearchLocation={setSearchLocation}
+          setSelectedDogBreed={setSelectedDogBreed}
           searchLocation={searchLocation}
+          setSearchLocation={setSearchLocation}
+          breedList={breedList}
           token={token}
+          searchContent={searchContent}
+          setSearchContent={setSearchContent}
         />
+        <AnimalTableData searchContent={searchContent}/>
         <BreedList
           setBreedList={setBreedList}
           searchType={searchType}

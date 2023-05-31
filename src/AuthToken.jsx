@@ -16,9 +16,11 @@ const AuthToken = ({token, setToken}) => {
               }),
         }
         const res = await fetch(petFinderUrl, options);
-        const token = await res.json()
+        const json = await res.json()
+        let token = json.access_token 
         setToken(token)
-        console.log(token)
+        return `Bearer ${token}`
+        
     }
 
     useEffect(() => {

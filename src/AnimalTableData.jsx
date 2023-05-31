@@ -21,9 +21,7 @@ export default function AnimalTableData({searchContent}) {
               return (
                 <tr>
                   <td>{x.name}</td>
-                  <td>{x.breed} 
-                    <td>{x.breed2}</td>
-                  </td>
+                  <td>{x.breed} {x.breed2}</td>
                   <td>
                     {x.city} {x.state}
                   </td>

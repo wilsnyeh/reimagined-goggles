@@ -29,12 +29,12 @@ function App() {
           searchContent={searchContent}
           setSearchContent={setSearchContent}
         />
-        <AnimalTableData searchContent={searchContent}/>
         <BreedList
           setBreedList={setBreedList}
           searchType={searchType}
           token={token}
         />
+        <AnimalTableData searchContent={searchContent}/>
       </div>
     </>
   );

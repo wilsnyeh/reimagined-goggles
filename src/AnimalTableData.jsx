@@ -5,7 +5,7 @@ export default function AnimalTableData({searchContent}) {
     return (
         <table className="table-center">
         <thead>
-          <tr>
+          <tr key='key'>
             <th>Animal Name</th>
             <th>Animal Breed</th>
             <th>Animal Location</th>

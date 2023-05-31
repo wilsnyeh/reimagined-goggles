@@ -15,6 +15,7 @@ const AnimalTypes = ({
   var UsaStates = require("usa-states").UsaStates;
   var usStates = new UsaStates();
   var statesAbbreviation = usStates.arrayOf("abbreviations");
+
   const handleSearchChange = (e) => {
     setSearchType(e.target.value);
   };
@@ -89,9 +90,8 @@ const AnimalTypes = ({
       return (
         <select
           onChange={handleSelectedDogBreedChange}
-          // element={<realSearchBreed breedList={breedList} />}
         >
-          <option></option>
+          <option ></option>
           {breedList.map((bl) => {
             return <option>{bl}</option>;
           })}

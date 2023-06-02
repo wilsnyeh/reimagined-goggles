@@ -1,10 +1,9 @@
 import "./App.css";
 
-export default function AnimalTableData({searchContent}) {
-
-    return (
-        <>
-        <table className="table-center">
+export default function AnimalTableData({ searchContent }) {
+  return (
+    <>
+      <table className="table-center">
         <thead>
           <tr>
             <th>Animal Name</th>
@@ -22,21 +21,42 @@ export default function AnimalTableData({searchContent}) {
               return (
                 <tr key={i}>
                   <td>{x.name}</td>
-                  <td>{x.breed} {x.breed2}</td>
+                  <td>
+                    {x.breed} {x.breed2}
+                  </td>
                   <td>
                     {x.city} {x.state}
                   </td>
-                  <td><img src={x.photo} width='100' height='100' alt="not available" /></td>
+                  {!x.photo ? (
+                      <td>
+                      <img
+                        src="./assets/paw-print-vector-icon.jpg"
+                        width="100"
+                        height="100"
+                        alt="not available2"
+                      />
+                    </td>
+                  ) : (
+                    <>
+                      <td>
+                        <img
+                          src={x.photo}
+                          width="100"
+                          height="100"
+                          alt="not available"
+                        />
+                      </td>
+                    </>
+                  )}
+
                   <td>{x.organization}</td>
-                  <td>{x.orgAnimalId}</td>
+                  {!x.orgAnimalId ? <td>n/a</td> : <td>{x.orgAnimalId}</td>}
                   <td>{x.email}</td>
                 </tr>
               );
             })}
         </tbody>
       </table>
-      
-      </>
-    )
-
+    </>
+  );
 }

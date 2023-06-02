@@ -61,6 +61,9 @@ const AnimalTypes = ({
     setPage(1);
   },[searchType])
 
+  //prevent default was also giving issues - reason for needing to move it searchsubmit into its own func
+  // but still allowing to call the fetch in useeffect
+  // even after moving the original searchsubmit into useeffect, and prevent default, was getting 'length' issue, along with unwanted page
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
     setSubmitted(true)
@@ -92,8 +95,6 @@ const AnimalTypes = ({
     let animalContent = content["animals"];
     let totalPages = content['pagination']['total_pages']
     setTotalPages(totalPages)
-    console.log('how many pages does this have?', totalPages)
-    console.log('what page am i on? ', page)
 
     for (let i = 0; i < content["animals"].length; i++) {
       const animalContentIdx = animalContent[i];
@@ -178,7 +179,7 @@ const AnimalTypes = ({
       </button>{" "}
       <button
         onClick={() => {
-          setPage(page + 1);
+          setPage(page < totalPages ? page + 1 : totalPages);
         }}
       >
         &gt;&gt;

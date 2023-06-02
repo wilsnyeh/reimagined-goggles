@@ -45,8 +45,6 @@ function App() {
         />
         <AnimalTableData
           searchContent={searchContent}
-          // page={page}
-          // setPage={setPage}
         />
       </div>
     </>

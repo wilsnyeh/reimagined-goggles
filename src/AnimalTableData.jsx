@@ -1,18 +1,12 @@
-import React, { useEffect } from "react";
+import "./App.css";
 
-export default function AnimalTableData({searchContent, page, setPage}) {
-
-    useEffect(() => {
-        
-    })
-
-    let cur = page
+export default function AnimalTableData({searchContent}) {
 
     return (
         <>
         <table className="table-center">
         <thead>
-          <tr key='key'>
+          <tr>
             <th>Animal Name</th>
             <th>Animal Breed</th>
             <th>Animal Location</th>
@@ -24,9 +18,9 @@ export default function AnimalTableData({searchContent, page, setPage}) {
         </thead>
         <tbody>
           {searchContent &&
-            searchContent.map((x) => {
+            searchContent.map((x, i) => {
               return (
-                <tr>
+                <tr key={i}>
                   <td>{x.name}</td>
                   <td>{x.breed} {x.breed2}</td>
                   <td>

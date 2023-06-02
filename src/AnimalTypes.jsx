@@ -1,5 +1,19 @@
 import { useEffect } from "react";
 
+const animalTypes = [
+  "",
+  "Cat",
+  "Dog",
+  "Bird",
+  "Rabbit",
+  "Horse",
+  "Scales-Fins-Other",
+  "Barnyard",
+];
+
+var UsaStates = require("usa-states").UsaStates;
+var usStates = new UsaStates();
+var statesAbbreviation = usStates.arrayOf("abbreviations");
 
 const AnimalTypes = ({
   token,
@@ -14,19 +28,14 @@ const AnimalTypes = ({
   setSearchContent,
   page,
   setPage,
+  totalPages,
+  setTotalPages,
+  submitted,
+  setSubmitted
+
 }) => 
 
 {
-  useEffect(() => {
-    
-    console.log('is this changing?')
-  },[page])
-
-  var UsaStates = require("usa-states").UsaStates;
-  var usStates = new UsaStates();
-  var statesAbbreviation = usStates.arrayOf("abbreviations");
-
-
   const handleSearchChange = (e) => {
     setSearchType(e.target.value);
   };
@@ -39,10 +48,26 @@ const AnimalTypes = ({
     setSelectedDogBreed(e.target.value);
   };
 
+  useEffect(() => {
+    //this was causing error for its initial render
+    //needed something to delay the first render
+    if (!submitted) {
+      return;
+    }
+  fetchAnimalData()
+  },[page])
 
+  useEffect(() => {
+    setPage(1);
+  },[searchType])
 
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
+    setSubmitted(true)
+    fetchAnimalData();
+  }
+
+  const fetchAnimalData = async () => {
     let petFinderSearchUrl = `https://api.petfinder.com/v2/animals?page=${page}`;
 
     petFinderSearchUrl += `&type=${searchType}`;
@@ -65,8 +90,9 @@ const AnimalTypes = ({
     const content = await res.json();
     let animals = [];
     let animalContent = content["animals"];
-    let pages = content['pagination']['total_pages']
-    console.log('how many pages does this have?', pages)
+    let totalPages = content['pagination']['total_pages']
+    setTotalPages(totalPages)
+    console.log('how many pages does this have?', totalPages)
     console.log('what page am i on? ', page)
 
     for (let i = 0; i < content["animals"].length; i++) {
@@ -106,23 +132,14 @@ const AnimalTypes = ({
       return (
         <select onChange={handleSelectedDogBreedChange}>
           <option></option>
-          {breedList.map((bl) => {
-            return <option>{bl}</option>;
+          {breedList.map((bl, i) => {
+            return <option key={i}>{bl}</option>;
           })}
         </select>
       );
     }
   };
-  const animalTypes = [
-    "",
-    "Cat",
-    "Dog",
-    "Bird",
-    "Rabbit",
-    "Horse",
-    "Scales-Fins-Other",
-    "Barnyard",
-  ];
+  
   return (
     <div>
       <form onSubmit={handleSearchSubmit}>
@@ -134,35 +151,40 @@ const AnimalTypes = ({
           onChange={handleSearchChange}
           name="animaltypes"
         >
-          {animalTypes.map((animal) => {
-            return <option>{animal}</option>;
+          {animalTypes.map((animal, i) => {
+            return <option key={i}>{animal}</option>;
           })}
         </select>
         {breedInput()}
 
         <select value={searchLocation} onChange={handleLocationChange}>
           <option></option>
-          {statesAbbreviation.map((abb) => {
-            return <option>{abb}</option>;
+          {statesAbbreviation.map((abb, i) => {
+            return <option key={i}>{abb}</option>;
           })}
         </select>
         <button type="submit">Search for an animal near you!</button>
       </form>
-      {/* <p>{pages}</p> */}
+      {submitted && (
+
+      <>
+      <p>Page {page} of {totalPages}</p>
       <button
         onClick={() => {
-          setPage(page = page > 1 ? page - 1 : 1);
+          setPage(page > 1 ? page - 1 : 1);
         }}
       >
         &lt;&lt;
       </button>{" "}
       <button
         onClick={() => {
-          setPage(page = page + 1);
+          setPage(page + 1);
         }}
       >
         &gt;&gt;
       </button>
+      </>
+      )}
     </div>
   );
 };

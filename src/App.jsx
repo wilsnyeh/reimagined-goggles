@@ -13,6 +13,8 @@ function App() {
   const [searchContent, setSearchContent] = useState([]);
   const [selectedDogBreed, setSelectedDogBreed] = useState("");
   const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState('')
+  const [submitted, setSubmitted] = useState(false)
 
   return (
     <>
@@ -36,6 +38,10 @@ function App() {
           setSearchContent={setSearchContent}
           page={page}
           setPage={setPage}
+          submitted={submitted}
+          setSubmitted={setSubmitted}
+          totalPages={totalPages}
+          setTotalPages={setTotalPages}
         />
         <AnimalTableData
           searchContent={searchContent}

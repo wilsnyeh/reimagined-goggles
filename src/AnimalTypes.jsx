@@ -19,11 +19,12 @@ const AnimalTypes = ({
   token,
   searchType,
   setSearchType,
-  selectedDogBreed,
-  setSelectedDogBreed,
+  selectedBreedType,
+  setSelectedBreedType,
   searchLocation,
   setSearchLocation,
   breedList,
+  setBreedList,
   searchContent,
   setSearchContent,
   page,
@@ -44,8 +45,8 @@ const AnimalTypes = ({
     setSearchLocation(e.target.value);
   };
 
-  const handleSelectedDogBreedChange = (e) => {
-    setSelectedDogBreed(e.target.value);
+  const handleSelectedBreedTypeChange = (e) => {
+    setSelectedBreedType(e.target.value);
   };
 
   useEffect(() => {
@@ -58,7 +59,22 @@ const AnimalTypes = ({
   },[page])
 
   useEffect(() => {
+    if (!submitted) {
+      return;
+    }
     setPage(1);
+    // setSelectedBreedType("")
+    fetchAnimalData()
+  },[selectedBreedType])
+
+  useEffect(() => {
+    if (!submitted) {
+      return;
+    }
+    setPage(1);
+    setSelectedBreedType("")
+    setBreedList([])
+    // fetchAnimalData()
   },[searchType])
 
   //prevent default was also giving issues - reason for needing to move it searchsubmit into its own func
@@ -75,8 +91,14 @@ const AnimalTypes = ({
 
     petFinderSearchUrl += `&type=${searchType}`;
 
-    if (selectedDogBreed && searchType === "Dog") {
-      petFinderSearchUrl += `&breed=${selectedDogBreed}`;
+    if (selectedBreedType && searchType === "Dog") {
+      petFinderSearchUrl += `&breed=${selectedBreedType}`;
+    }
+    if (selectedBreedType && searchType === "Cat") {
+      petFinderSearchUrl += `&breed=${selectedBreedType}`;
+    }
+    if (selectedBreedType && searchType === "Bird") {
+      petFinderSearchUrl += `&breed=${selectedBreedType}`;
     }
     if (searchLocation.length > 0) {
       petFinderSearchUrl += `&location=${searchLocation}`;
@@ -131,7 +153,27 @@ const AnimalTypes = ({
   const breedInput = () => {
     if (searchType === "Dog") {
       return (
-        <select onChange={handleSelectedDogBreedChange}>
+        <select onChange={handleSelectedBreedTypeChange}>
+          <option></option>
+          {breedList.map((bl, i) => {
+            return <option key={i}>{bl}</option>;
+          })}
+        </select>
+      );
+    }
+    if (searchType === "Cat") {
+      return (
+        <select onChange={handleSelectedBreedTypeChange}>
+          <option></option>
+          {breedList.map((bl, i) => {
+            return <option key={i}>{bl}</option>;
+          })}
+        </select>
+      );
+    }
+    if (searchType === "Bird") {
+      return (
+        <select onChange={handleSelectedBreedTypeChange}>
           <option></option>
           {breedList.map((bl, i) => {
             return <option key={i}>{bl}</option>;

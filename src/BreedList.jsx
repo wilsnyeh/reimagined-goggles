@@ -1,9 +1,9 @@
 import React from "react";
 
-const BreedList = ({token, setBreedList}) => {
+const BreedList = ({token, setBreedList, searchType}) => {
     const searchBreeds = async (e) => {
         e.preventDefault();
-        let breedSearchUrl = "https://api.petfinder.com/v2/types/dog/breeds";
+        let breedSearchUrl = `https://api.petfinder.com/v2/types/${searchType}/breeds`;
         let breedSearchOptions = {
           method: "GET",
           headers: {
@@ -15,10 +15,10 @@ const BreedList = ({token, setBreedList}) => {
         const content = await res.json();
     
         let breedsList = [];
-        let dogBreeds = content["breeds"];
-        for (let i = 0; i < dogBreeds.length; i++) {
-          const listOfDogBreeds = dogBreeds[i]["name"];
-          breedsList.push(listOfDogBreeds);
+        let breedTypes = content["breeds"];
+        for (let i = 0; i < breedTypes.length; i++) {
+          const listOfBreeds = breedTypes[i]["name"];
+          breedsList.push(listOfBreeds);
         }
         setBreedList(breedsList);
       };

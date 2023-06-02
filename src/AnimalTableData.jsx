@@ -1,7 +1,7 @@
 import "./App.css"; 
 import pawvector from './assets/paw-print-vector-icon.jpg'
 
-export default function AnimalTableData({ searchContent }) {
+export default function AnimalTableData({ searchContent}) {
   return (
     <>
       <table className="table-center">

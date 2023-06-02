@@ -11,7 +11,7 @@ function App() {
   const [breedList, setBreedList] = useState([]);
   const [searchLocation, setSearchLocation] = useState("");
   const [searchContent, setSearchContent] = useState([]);
-  const [selectedDogBreed, setSelectedDogBreed] = useState("");
+  const [selectedBreedType, setSelectedBreedType] = useState("");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState('')
   const [submitted, setSubmitted] = useState(false)
@@ -28,11 +28,12 @@ function App() {
         <AnimalTypes
           searchType={searchType}
           setSearchType={setSearchType}
-          selectedDogBreed={selectedDogBreed}
-          setSelectedDogBreed={setSelectedDogBreed}
+          selectedBreedType={selectedBreedType}
+          setSelectedBreedType={setSelectedBreedType}
           searchLocation={searchLocation}
           setSearchLocation={setSearchLocation}
           breedList={breedList}
+          setBreedList={setBreedList}
           token={token}
           searchContent={searchContent}
           setSearchContent={setSearchContent}

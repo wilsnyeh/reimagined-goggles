@@ -1,4 +1,5 @@
-import "./App.css";
+import "./App.css"; 
+import pawvector from './assets/paw-print-vector-icon.jpg'
 
 export default function AnimalTableData({ searchContent }) {
   return (
@@ -30,7 +31,7 @@ export default function AnimalTableData({ searchContent }) {
                   {!x.photo ? (
                       <td>
                       <img
-                        src="./assets/paw-print-vector-icon.jpg"
+                        src={pawvector}
                         width="100"
                         height="100"
                         alt="not available2"
@@ -50,7 +51,7 @@ export default function AnimalTableData({ searchContent }) {
                   )}
 
                   <td>{x.organization}</td>
-                  {!x.orgAnimalId ? <td>n/a</td> : <td>{x.orgAnimalId}</td>}
+                  {!x.orgAnimalId ? <td>❌</td> : <td>{x.orgAnimalId}</td>}
                   <td>{x.email}</td>
                 </tr>
               );

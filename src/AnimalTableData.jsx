@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-export default function AnimalTableData({searchContent}) {
+export default function AnimalTableData({searchContent, page, setPage}) {
+
+    useEffect(() => {
+        
+    })
+
+    let cur = page
 
     return (
+        <>
         <table className="table-center">
         <thead>
           <tr key='key'>
@@ -34,6 +41,8 @@ export default function AnimalTableData({searchContent}) {
             })}
         </tbody>
       </table>
+      
+      </>
     )
 
 }

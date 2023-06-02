@@ -12,6 +12,7 @@ function App() {
   const [searchLocation, setSearchLocation] = useState("");
   const [searchContent, setSearchContent] = useState([]);
   const [selectedDogBreed, setSelectedDogBreed] = useState("");
+  const [page, setPage] = useState(1);
 
   return (
     <>
@@ -33,8 +34,14 @@ function App() {
           token={token}
           searchContent={searchContent}
           setSearchContent={setSearchContent}
+          page={page}
+          setPage={setPage}
         />
-        <AnimalTableData searchContent={searchContent}/>
+        <AnimalTableData
+          searchContent={searchContent}
+          // page={page}
+          // setPage={setPage}
+        />
       </div>
     </>
   );

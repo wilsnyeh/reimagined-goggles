@@ -4,6 +4,7 @@ import AuthToken from "./AuthToken";
 import BreedList from "./BreedList";
 import AnimalTypes from "./AnimalTypes";
 import AnimalTableData from "./AnimalTableData";
+import AnimalTypeFetch from "./AnimalTypeFetch";
 
 function App() {
   const [token, setToken] = useState("");
@@ -15,6 +16,7 @@ function App() {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [animalTypes, setAnimalTypes] = useState([])
 
   return (
     <>
@@ -44,6 +46,7 @@ function App() {
           totalPages={totalPages}
           setTotalPages={setTotalPages}
         />
+        <AnimalTypeFetch token={token} setAnimalTypes={setAnimalTypes}/>
         <AnimalTableData
           searchContent={searchContent}
         />

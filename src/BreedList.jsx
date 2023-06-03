@@ -11,9 +11,9 @@ const BreedList = ({token, setBreedList, searchType}) => {
             Authorization: `Bearer ${token}`,
           },
         };
+        try{
         const res = await fetch(breedSearchUrl, breedSearchOptions);
         const content = await res.json();
-    
         let breedsList = [];
         let breedTypes = content["breeds"];
         for (let i = 0; i < breedTypes.length; i++) {
@@ -21,6 +21,9 @@ const BreedList = ({token, setBreedList, searchType}) => {
           breedsList.push(listOfBreeds);
         }
         setBreedList(breedsList);
+      } catch (error) {
+        console.error('this is breelist error', error)
+      }
       };
       return (
         <div style={{paddingBottom:25}}>
@@ -29,7 +32,6 @@ const BreedList = ({token, setBreedList, searchType}) => {
             >get breeds</button>
         </div>
       )
-    
 }
 
 export default BreedList

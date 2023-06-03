@@ -3,8 +3,11 @@ import React, { useEffect } from "react";
 const AuthToken = ({token, setToken}) => {
 
     async function userAuth() {
-        let petFinderUrl = 'https://api.petfinder.com/v2/oauth2/token'
-        let options = {
+      // should use const instead of let
+      // missing ; at the end of line
+      try { 
+        const petFinderUrl = 'https://api.petfinder.com/v2/oauth2/token'
+        const options = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -20,9 +23,16 @@ const AuthToken = ({token, setToken}) => {
         let token = json.access_token 
         setToken(token)
         return `Bearer ${token}`
+      } catch (error) {
+        console.error('error on token', error)
+      }
         
     }
 
+    // using let, and not updating it
+    // tokens are 'shadowing' 
+    // dont need to stringify, if its already a string
+    // the useeffect is extra, instead could move 'if(token) up' 
     useEffect(() => {
         if(token) {
           localStorage.setItem('token', JSON.stringify(token))

@@ -17,6 +17,7 @@ function App() {
   const [totalPages, setTotalPages] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [animalTypes, setAnimalTypes] = useState([])
+  const [moreInfo, setMoreInfo] = useState(false)
 
   return (
     <>
@@ -49,6 +50,8 @@ function App() {
         <AnimalTypeFetch token={token} setAnimalTypes={setAnimalTypes}/>
         <AnimalTableData
           searchContent={searchContent}
+          moreInfo={moreInfo}
+          setMoreInfo={setMoreInfo}
         />
       </div>
     </>

@@ -5,7 +5,7 @@ const AuthToken = ({token, setToken}) => {
     async function userAuth() {
       // should use const instead of let
       // missing ; at the end of line
-      try { 
+      // try { 
         const petFinderUrl = 'https://api.petfinder.com/v2/oauth2/token'
         const options = {
             method: 'POST',
@@ -23,11 +23,12 @@ const AuthToken = ({token, setToken}) => {
         let token = json.access_token 
         setToken(token)
         return `Bearer ${token}`
-      } catch (error) {
-        console.error('error on token', error)
-      }
+      } 
+      // catch (error) {
+      //   console.error('error on token', error)
+      // }
         
-    }
+    // }
 
     // using let, and not updating it
     // tokens are 'shadowing' 
@@ -38,9 +39,9 @@ const AuthToken = ({token, setToken}) => {
           localStorage.setItem('token', JSON.stringify(token))
         }
       },[token])
-    
+    //why didnt this throw an error before? it was trying to json parse the token
       useEffect(() => {
-        const token = JSON.parse(localStorage.getItem('token'))
+        const token = localStorage.getItem('token')
         if (token) {
           setToken(token)
         }

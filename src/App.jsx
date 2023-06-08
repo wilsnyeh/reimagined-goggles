@@ -5,6 +5,8 @@ import BreedList from "./BreedList";
 import AnimalTypes from "./AnimalTypes";
 import AnimalTableData from "./AnimalTableData";
 import AnimalTypeFetch from "./AnimalTypeFetch";
+import LoginToken from "./LoginToken";
+import { Route, Routes } from "react-router";
 
 function App() {
   const [token, setToken] = useState("");
@@ -14,45 +16,67 @@ function App() {
   const [searchContent, setSearchContent] = useState([]);
   const [selectedBreedType, setSelectedBreedType] = useState("");
   const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState('')
-  const [submitted, setSubmitted] = useState(false)
-  const [animalTypes, setAnimalTypes] = useState([])
-  const [moreInfo, setMoreInfo] = useState(false)
+  const [totalPages, setTotalPages] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [animalTypes, setAnimalTypes] = useState([]);
+  const [moreInfo, setMoreInfo] = useState(false);
 
   return (
     <>
       <div className="App">
-        <AuthToken setToken={setToken} token={token} />
-        <BreedList
-          setBreedList={setBreedList}
-          searchType={searchType}
-          token={token}
-        />
-        <AnimalTypes
-          searchType={searchType}
-          setSearchType={setSearchType}
-          selectedBreedType={selectedBreedType}
-          setSelectedBreedType={setSelectedBreedType}
-          searchLocation={searchLocation}
-          setSearchLocation={setSearchLocation}
-          breedList={breedList}
-          setBreedList={setBreedList}
-          token={token}
-          searchContent={searchContent}
-          setSearchContent={setSearchContent}
-          page={page}
-          setPage={setPage}
-          submitted={submitted}
-          setSubmitted={setSubmitted}
-          totalPages={totalPages}
-          setTotalPages={setTotalPages}
-        />
-        <AnimalTypeFetch token={token} setAnimalTypes={setAnimalTypes}/>
-        <AnimalTableData
-          searchContent={searchContent}
-          moreInfo={moreInfo}
-          setMoreInfo={setMoreInfo}
-        />
+        <Routes>
+          <Route
+            path="/"
+            element={<AuthToken setToken={setToken} token={token} />}
+          />
+          <Route
+            path="/petfinder"
+            element={
+              <AnimalTypes
+                searchType={searchType}
+                setSearchType={setSearchType}
+                selectedBreedType={selectedBreedType}
+                setSelectedBreedType={setSelectedBreedType}
+                searchLocation={searchLocation}
+                setSearchLocation={setSearchLocation}
+                breedList={breedList}
+                setBreedList={setBreedList}
+                token={token}
+                searchContent={searchContent}
+                setSearchContent={setSearchContent}
+                page={page}
+                setPage={setPage}
+                submitted={submitted}
+                setSubmitted={setSubmitted}
+                totalPages={totalPages}
+                setTotalPages={setTotalPages}
+              />
+            }
+          />
+          <Route
+            path="/petfinder"
+            element={
+              <BreedList
+                setBreedList={setBreedList}
+                searchType={searchType}
+                token={token}
+              />
+            }
+          />
+          <Route
+            path="/petfinder"
+            element={
+              <AnimalTableData
+                searchContent={searchContent}
+                moreInfo={moreInfo}
+                setMoreInfo={setMoreInfo}
+                token={token}
+              />
+            }
+          />
+        </Routes>
+
+        {/* <AnimalTypeFetch token={token} setAnimalTypes={setAnimalTypes} /> */}
       </div>
     </>
   );

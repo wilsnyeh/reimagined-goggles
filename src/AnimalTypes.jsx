@@ -85,7 +85,7 @@ const AnimalTypes = ({
     setSubmitted(true)
     fetchAnimalData();
   }
-
+try {
   const fetchAnimalData = async () => {
     let petFinderSearchUrl = `https://api.petfinder.com/v2/animals?page=${page}`;
 
@@ -150,6 +150,9 @@ const AnimalTypes = ({
     }
     setSearchContent(animals);
   };
+} catch(error) {
+  console.error('this is animal search error', error)
+}
   const breedInput = () => {
     if (searchType === "Dog") {
       return (

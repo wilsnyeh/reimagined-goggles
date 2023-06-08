@@ -2,8 +2,9 @@ import "./App.css";
 import pawvector from './assets/paw-print-vector-icon.jpg'
 import { handleMoreInfoClick } from './MoreInfoButton.jsx'
 
-export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo}) {
+export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo, token}) {
   console.log(moreInfo)
+  // {!token ? <h1>grab a token</h1>  : null}
   return (
     <>
       <table className="table-center">
@@ -58,7 +59,7 @@ export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo})
                   )}
                   </tr>
                   {moreInfo ? 
-                  <tr>
+                  <tr key={i}>
                   <td>{x.organization}</td>
                   {!x.orgAnimalId ? <td>❌</td> : <td>{x.orgAnimalId}</td>}
                   <td>{x.email}</td>

@@ -33,7 +33,8 @@ function App() {
           element={
 
           <>
-
+          {token && (
+              <>
               <AnimalTypes
                 searchType={searchType}
                 setSearchType={setSearchType}
@@ -64,6 +65,8 @@ function App() {
                 setMoreInfo={setMoreInfo}
                 token={token}
               />
+              </>
+              )}
               </>
           }
             />

@@ -9,6 +9,7 @@ import LoginToken from "./LoginToken";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { Logout } from "./Logout";
 import { ReturnToLogin } from "./ReturnToLogin";
+import { DetailsModal } from "./DetailsModal";
 
 function App() {
   const [token, setToken] = useState("");
@@ -23,6 +24,7 @@ function App() {
   const [animalTypes, setAnimalTypes] = useState([]);
   const [moreInfo, setMoreInfo] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
 
   return (
@@ -83,8 +85,11 @@ function App() {
                       setMoreInfo={setMoreInfo}
                       token={token}
                     />
+                    <DetailsModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
                   </>
-                ) : <ReturnToLogin token={token} setLoggedIn={setLoggedIn}/>}
+                ) : 
+                <ReturnToLogin token={token} setLoggedIn={setLoggedIn}/>
+                }
               </>
             }
           />

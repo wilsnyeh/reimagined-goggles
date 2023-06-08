@@ -9,7 +9,7 @@ export function ReturnToLogin({token, setLoggedIn}) {
   };
 
   useEffect(() => {
-    
+
   })
 
   const handleReturnLoginSubmit = async () => {
@@ -23,8 +23,9 @@ export function ReturnToLogin({token, setLoggedIn}) {
     <>
       <h1>this is protected</h1>
       <button onClick={() => {
+        // homeRedirect();
+        // handleReturnLoginSubmit()
         homeRedirect();
-        handleReturnLoginSubmit()
       }}>go back to login</button>
     </>
   );

@@ -6,20 +6,20 @@ export function Logout({ token, setLoggedIn, loggedIn }) {
 
   useEffect(() => {
     if (!loggedIn && !token) {
-        navigate('/')
+      navigate("/");
     }
-  },[loggedIn])
+  }, [loggedIn]);
 
   const handleLogoutSubmit = async () => {
     localStorage.clear(token);
-    setLoggedIn(false);
+    if (!token) {
+      setLoggedIn(false);
+    }
   };
   return (
     <>
       {/* {!loggedIn && <Navigate to="/" />} */}
-      <button onClick={handleLogoutSubmit}>
-        logout
-      </button>
+      <button onClick={handleLogoutSubmit}>logout</button>
     </>
   );
 }

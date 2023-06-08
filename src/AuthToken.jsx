@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useNavigationType } from "react-router";
 
 const AuthToken = ({ token, setToken }) => {
+  const navigate = useNavigate();
+
   async function userAuth() {
     // should use const instead of let
     // missing ; at the end of line
@@ -22,7 +24,9 @@ const AuthToken = ({ token, setToken }) => {
       const json = await res.json();
       let token = json.access_token;
       setToken(token);
+      // console.log('what does my token look like?', token)
       return `Bearer ${token}`;
+      
     } catch (error) {
       console.error("error on token", error);
     }
@@ -35,21 +39,18 @@ const AuthToken = ({ token, setToken }) => {
   useEffect(() => {
     if (token) {
       localStorage.setItem("token", token);
+      navigate('/petfinder')
     }
   }, [token]);
   //why didnt this throw an error before? it was trying to json parse the token
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      setToken(token);
+    const localToken = localStorage.getItem("token");
+    if (localToken) {
+      setToken(localToken);
     }
   }, []);
 
-  let navigate = useNavigate();
-  const routeChange = () => {
-      let path = `/petfinder`
-      navigate(path);
-  }
+
   return (
     <div>
       <input type="text" placeholder="username" />
@@ -60,7 +61,6 @@ const AuthToken = ({ token, setToken }) => {
         type="submit"
         onClick={() => {
           userAuth();
-          routeChange();
         }}
       >
         Login

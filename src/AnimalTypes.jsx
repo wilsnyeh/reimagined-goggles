@@ -37,6 +37,7 @@ const AnimalTypes = ({
 }) => 
 
 {
+  console.log('can this be my token?', token)
   const handleSearchChange = (e) => {
     setSearchType(e.target.value);
   };
@@ -85,7 +86,7 @@ const AnimalTypes = ({
     setSubmitted(true)
     fetchAnimalData();
   }
-try {
+
   const fetchAnimalData = async () => {
     let petFinderSearchUrl = `https://api.petfinder.com/v2/animals?page=${page}`;
 
@@ -110,6 +111,7 @@ try {
         Authorization: `Bearer ${token}`,
       },
     };
+    console.log('what does my token look like here in animaltypes?', token)
 
     const res = await fetch(petFinderSearchUrl, options);
     const content = await res.json();
@@ -150,9 +152,7 @@ try {
     }
     setSearchContent(animals);
   };
-} catch(error) {
-  console.error('this is animal search error', error)
-}
+ 
   const breedInput = () => {
     if (searchType === "Dog") {
       return (
@@ -185,6 +185,11 @@ try {
       );
     }
   };
+  // try {
+  //   fetchAnimalData();
+  // }catch(error) {
+  //   console.error('this is animal search error', error)
+  // }
   
   return (
     <div>

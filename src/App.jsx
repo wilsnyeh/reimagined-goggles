@@ -29,9 +29,11 @@ function App() {
             path="/"
             element={<AuthToken setToken={setToken} token={token} />}
           />
-          <Route
-            path="/petfinder"
-            element={
+          <Route path="/petfinder"
+          element={
+
+          <>
+
               <AnimalTypes
                 searchType={searchType}
                 setSearchType={setSearchType}
@@ -51,29 +53,20 @@ function App() {
                 totalPages={totalPages}
                 setTotalPages={setTotalPages}
               />
-            }
-          />
-          <Route
-            path="/petfinder"
-            element={
               <BreedList
                 setBreedList={setBreedList}
                 searchType={searchType}
                 token={token}
               />
-            }
-          />
-          <Route
-            path="/petfinder"
-            element={
               <AnimalTableData
                 searchContent={searchContent}
                 moreInfo={moreInfo}
                 setMoreInfo={setMoreInfo}
                 token={token}
               />
-            }
-          />
+              </>
+          }
+            />
         </Routes>
 
         {/* <AnimalTypeFetch token={token} setAnimalTypes={setAnimalTypes} /> */}

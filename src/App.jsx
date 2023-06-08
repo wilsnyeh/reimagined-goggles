@@ -6,7 +6,9 @@ import AnimalTypes from "./AnimalTypes";
 import AnimalTableData from "./AnimalTableData";
 import AnimalTypeFetch from "./AnimalTypeFetch";
 import LoginToken from "./LoginToken";
-import { Route, Routes } from "react-router";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import { Logout } from "./Logout";
+import { ReturnToLogin } from "./ReturnToLogin";
 
 function App() {
   const [token, setToken] = useState("");
@@ -20,6 +22,8 @@ function App() {
   const [submitted, setSubmitted] = useState(false);
   const [animalTypes, setAnimalTypes] = useState([]);
   const [moreInfo, setMoreInfo] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+
 
   return (
     <>
@@ -27,49 +31,63 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<AuthToken setToken={setToken} token={token} />}
+            element={
+              <AuthToken
+                setToken={setToken}
+                token={token}
+                setLoggedIn={setLoggedIn}
+                loggedIn={loggedIn}
+              />
+            }
           />
-          <Route path="/petfinder"
-          element={
-
-          <>
-          {token && (
+          <Route
+            path="/petfinder"
+            element={
               <>
-              <AnimalTypes
-                searchType={searchType}
-                setSearchType={setSearchType}
-                selectedBreedType={selectedBreedType}
-                setSelectedBreedType={setSelectedBreedType}
-                searchLocation={searchLocation}
-                setSearchLocation={setSearchLocation}
-                breedList={breedList}
-                setBreedList={setBreedList}
-                token={token}
-                searchContent={searchContent}
-                setSearchContent={setSearchContent}
-                page={page}
-                setPage={setPage}
-                submitted={submitted}
-                setSubmitted={setSubmitted}
-                totalPages={totalPages}
-                setTotalPages={setTotalPages}
-              />
-              <BreedList
-                setBreedList={setBreedList}
-                searchType={searchType}
-                token={token}
-              />
-              <AnimalTableData
-                searchContent={searchContent}
-                moreInfo={moreInfo}
-                setMoreInfo={setMoreInfo}
-                token={token}
-              />
+                {token && loggedIn ? (
+                  <>
+                    <Logout
+                      token={token}
+                      loggedIn={loggedIn}
+                      setLoggedIn={setLoggedIn}
+                    />
+                    <AnimalTypes
+                      searchType={searchType}
+                      setSearchType={setSearchType}
+                      selectedBreedType={selectedBreedType}
+                      setSelectedBreedType={setSelectedBreedType}
+                      searchLocation={searchLocation}
+                      setSearchLocation={setSearchLocation}
+                      breedList={breedList}
+                      setBreedList={setBreedList}
+                      token={token}
+                      searchContent={searchContent}
+                      setSearchContent={setSearchContent}
+                      page={page}
+                      setPage={setPage}
+                      submitted={submitted}
+                      setSubmitted={setSubmitted}
+                      totalPages={totalPages}
+                      setTotalPages={setTotalPages}
+                      loggedIn={loggedIn}
+                      setLoggedIn={setLoggedIn}
+                    />
+                    <BreedList
+                      setBreedList={setBreedList}
+                      searchType={searchType}
+                      token={token}
+                    />
+                    <AnimalTableData
+                      searchContent={searchContent}
+                      moreInfo={moreInfo}
+                      setMoreInfo={setMoreInfo}
+                      token={token}
+                    />
+                  </>
+                ) : <ReturnToLogin token={token} setLoggedIn={setLoggedIn}/>}
               </>
-              )}
-              </>
-          }
-            />
+            }
+          />
         </Routes>
 
         {/* <AnimalTypeFetch token={token} setAnimalTypes={setAnimalTypes} /> */}

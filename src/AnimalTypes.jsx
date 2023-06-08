@@ -49,7 +49,7 @@ const AnimalTypes = ({
   const handleSelectedBreedTypeChange = (e) => {
     setSelectedBreedType(e.target.value);
   };
-
+  // this is to rerender when pages are increased/decreased
   useEffect(() => {
     //this was causing error for its initial render
     //needed something to delay the first render
@@ -59,6 +59,7 @@ const AnimalTypes = ({
   fetchAnimalData()
   },[page])
 
+  // this is to reset page when breedtype is changed
   useEffect(() => {
     if (!submitted) {
       return;
@@ -67,7 +68,7 @@ const AnimalTypes = ({
     // setSelectedBreedType("")
     fetchAnimalData()
   },[selectedBreedType])
-
+  // this resets the page, breedtype, and breedlist, when searchtype is changed
   useEffect(() => {
     if (!submitted) {
       return;
@@ -138,6 +139,7 @@ const AnimalTypes = ({
       }
       let animal = {
         name: name,
+        type: searchType,
         breed: animalBreed,
         breed2: secondBreed,
         city: animalCity,

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { useNavigate, useNavigationType } from "react-router";
+import { useNavigate } from "react-router-dom";
 
-const AuthToken = ({ token, setToken }) => {
+const AuthToken = ({ token, setToken, setLoggedIn, loggedIn }) => {
   const navigate = useNavigate();
 
   async function userAuth() {
@@ -24,6 +24,7 @@ const AuthToken = ({ token, setToken }) => {
       const json = await res.json();
       let token = json.access_token;
       setToken(token);
+      setLoggedIn(true);
       // console.log('what does my token look like?', token)
       return `Bearer ${token}`;
       
@@ -36,15 +37,22 @@ const AuthToken = ({ token, setToken }) => {
   // tokens are 'shadowing'
   // dont need to stringify, if its already a string
   // the useeffect is extra, instead could move 'if(token) up'
+  // useEffect(() => {
+  //   if (token) {
+  //     localStorage.setItem("token", token);
+  //     navigate('/petfinder')
+  //   } 
+  // }, [token]);
+
   useEffect(() => {
     if (token) {
-      localStorage.setItem("token", token);
+      localStorage.setItem('token', token);
       navigate('/petfinder')
-    }
+    } 
   }, [token]);
   //why didnt this throw an error before? it was trying to json parse the token
   useEffect(() => {
-    const localToken = localStorage.getItem("token");
+    const localToken = localStorage.getItem('token');
     if (localToken) {
       setToken(localToken);
     }

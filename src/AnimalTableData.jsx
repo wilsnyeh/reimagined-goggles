@@ -11,6 +11,7 @@ export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo, 
         <thead>
           <tr>
             <th>Animal Name</th>
+            <th>Type</th>
             <th>Animal Breed</th>
             <th>Animal Location</th>
             <th>Photos</th>
@@ -30,6 +31,7 @@ export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo, 
                 <>
                 <tr key={i}>
                   <td>{x.name}</td>
+                  <td>{x.type}</td>
                   <td>
                     {x.breed} {x.breed2}
                   </td>
@@ -58,6 +60,7 @@ export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo, 
                     </>
                   )}
                   </tr>
+                  {/*this is where you want to render the animaldetails*/}
                   {moreInfo ? 
                   <tr key={i}>
                   <td>{x.organization}</td>

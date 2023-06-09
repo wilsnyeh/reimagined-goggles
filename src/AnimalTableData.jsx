@@ -13,7 +13,6 @@ export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo, 
   const handleCloseModal = () => {
     setIsModalOpen(false)
   }
-  // {!token ? <h1>grab a token</h1>  : null}
   return (
     <>
     <div className='table-container'>
@@ -26,13 +25,13 @@ export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo, 
             <th>Animal Location</th>
             <th>Photos</th>
             </tr>
-            {moreInfo ? 
+            {/* {moreInfo ? 
             <tr>
             <th>Organization Id</th>
             <th>Animal Organization Id</th>
             <th>Organization Email</th>
             </tr>
-            : null}
+            : null} */}
         </thead>
         <tbody>
           {searchContent &&
@@ -83,7 +82,7 @@ export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo, 
         </tbody>
       </table>
       </div>
-      <ReactModal isOpen={isModalOpen} onRequestClose={handleCloseModal} className='Modal-Content' overlayClassName='Modal-Portal'>
+      <ReactModal isOpen={isModalOpen} onRequestClose={handleCloseModal} ariaHideApp={false} className='Modal-Content' overlayClassName='Modal-Portal'>
         {selectedAnimalDetail &&  (
           <>
           <div>
@@ -105,7 +104,7 @@ export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo, 
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr key={selectedAnimalDetail}>
               <td>{selectedAnimalDetail.organization}</td>
               {!selectedAnimalDetail.email ? <td>❌</td> : <td>{selectedAnimalDetail.email}</td>}
               {!selectedAnimalDetail.orgAnimalId ? <td>❌</td> : <td>{selectedAnimalDetail.orgAnimalId}</td>}

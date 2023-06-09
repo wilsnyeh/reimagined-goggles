@@ -46,7 +46,6 @@ function App() {
             element={
               <>
                 {token ? (
-                  // && loggedIn
                   <>
                     <Logout
                       token={token}
@@ -88,6 +87,7 @@ function App() {
                       isModalOpen={isModalOpen}
                       setSelectedAnimalDetail={setSelectedAnimalDetail}
                       selectedAnimalDetail={selectedAnimalDetail}
+                      loggedIn={loggedIn}
                     />
                   </>
                 ) : (
@@ -95,6 +95,7 @@ function App() {
                     token={token}
                     setLoggedIn={setLoggedIn}
                     loggedIn={loggedIn}
+                    setToken={setToken}
                   />
                 )}
               </>

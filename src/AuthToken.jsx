@@ -23,7 +23,6 @@ const AuthToken = ({ token, setToken, setLoggedIn, loggedIn }) => {
       const json = await res.json();
       let token = json.access_token;
       setToken(token);
-      console.log('this is in authtoken, loggedin status',loggedIn)
       return `Bearer ${token}`;
       
     } catch (error) {
@@ -33,8 +32,9 @@ const AuthToken = ({ token, setToken, setLoggedIn, loggedIn }) => {
 
   // this checks if token is true, then stores token into local storage and redirects
   useEffect(() => {
-    if (token) {
+    if (loggedIn) {
       localStorage.setItem('token', token);
+      localStorage.setItem('LoggedIn', loggedIn)
       navigate('/petfinder')
     } else {
       navigate('/')
@@ -43,6 +43,7 @@ const AuthToken = ({ token, setToken, setLoggedIn, loggedIn }) => {
   //why didnt this throw an error before? it was trying to json parse the token
   useEffect(() => {
     const localToken = localStorage.getItem('token');
+    localStorage.getItem('LoggedIn')
     if (localToken) {
       setToken(localToken);
     }

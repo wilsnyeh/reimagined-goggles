@@ -6,9 +6,6 @@ const AuthToken = ({ token, setToken, setLoggedIn, loggedIn }) => {
   const navigate = useNavigate();
 
   async function userAuth() {
-    // should use const instead of let
-    // missing ; at the end of line
-    // this is using yeh.spam api key 
     try {
       const petFinderUrl = "https://api.petfinder.com/v2/oauth2/token";
       const options = {
@@ -34,17 +31,6 @@ const AuthToken = ({ token, setToken, setLoggedIn, loggedIn }) => {
     }
   }
 
-  // using let, and not updating it
-  // tokens are 'shadowing'
-  // dont need to stringify, if its already a string
-  // the useeffect is extra, instead could move 'if(token) up'
-  // useEffect(() => {
-  //   if (token) {
-  //     localStorage.setItem("token", token);
-  //     navigate('/petfinder')
-  //   } 
-  // }, [token]);
-
   // this checks if token is true, then stores token into local storage and redirects
   useEffect(() => {
     if (token) {
@@ -66,6 +52,14 @@ const AuthToken = ({ token, setToken, setLoggedIn, loggedIn }) => {
     setLoggedIn(true);
   }
 
+  // to keep the authentication process more concise 
+  // we may approach this a few ways
+  // when token is set, to set loggedIn true
+  // and use loggedIn to validate access around other areas of the application
+  // are there pitfalls to consider when we look at this approach?
+  // the other being loggedIn may not be necessary, as a user may use just the token to navigate around the application
+  // are there pitfalls to consider when we look at this approach?
+  // another concept to consider is how JS is synchronous, in such that function calls unless specified, will run simultaneously, and that may not always be what we want to happen when we were attempting to render lots of data; and that perhaps the reason why some functions are 'failing' could be due to running simulatenously when in reality it requires an output of another function first
   return (
     <div className='login-container'>
       <input className='login-input' type="text" placeholder="username" />

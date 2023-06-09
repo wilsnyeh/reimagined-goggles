@@ -5,12 +5,10 @@ import BreedList from "./BreedList";
 import AnimalTypes from "./AnimalTypes";
 import AnimalTableData from "./AnimalTableData";
 import AnimalTypeFetch from "./AnimalTypeFetch";
-import LoginToken from "./LoginToken";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes} from "react-router-dom";
 import { Logout } from "./Logout";
 import { ReturnToLogin } from "./ReturnToLogin";
-import { DetailsModal } from "./DetailsModal";
-import { AnimalDetails } from "./AnimalDetails";
+
 
 function App() {
   const [token, setToken] = useState("");
@@ -27,7 +25,6 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAnimalDetail, setSelectedAnimalDetail] = useState(null);
-
 
   return (
     <>
@@ -48,9 +45,8 @@ function App() {
             path="/petfinder"
             element={
               <>
-                {token 
-                // && loggedIn 
-                ? (
+                {token ? (
+                  // && loggedIn
                   <>
                     <Logout
                       token={token}
@@ -83,8 +79,6 @@ function App() {
                       searchType={searchType}
                       token={token}
                     />
-                    {/* <DetailsModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/> */}
-                    {/* <AnimalDetails searchContent={searchContent} isModalOpen={isModalOpen}/> */}
                     <AnimalTableData
                       searchContent={searchContent}
                       moreInfo={moreInfo}
@@ -95,17 +89,18 @@ function App() {
                       setSelectedAnimalDetail={setSelectedAnimalDetail}
                       selectedAnimalDetail={selectedAnimalDetail}
                     />
-                    
                   </>
-                ) : 
-                <ReturnToLogin token={token} setLoggedIn={setLoggedIn} loggedIn={loggedIn}/>
-                }
+                ) : (
+                  <ReturnToLogin
+                    token={token}
+                    setLoggedIn={setLoggedIn}
+                    loggedIn={loggedIn}
+                  />
+                )}
               </>
             }
           />
         </Routes>
-
-        {/* <AnimalTypeFetch token={token} setAnimalTypes={setAnimalTypes} /> */}
       </div>
     </>
   );

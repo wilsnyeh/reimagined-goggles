@@ -84,18 +84,19 @@ export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo, 
       </table>
       </div>
       <ReactModal isOpen={isModalOpen} onRequestClose={handleCloseModal} className='Modal-Content' overlayClassName='Modal-Portal'>
-        {selectedAnimalDetail && (
+        {selectedAnimalDetail &&  (
           <>
+          <div>
           {!selectedAnimalDetail.photo ? 
-                      <img
+                      <img className='modal-img'
                         src={pawvector}
                         width="200"
                         height="200"
                         alt="not available2"
                       /> :
-          <img src={selectedAnimalDetail.photo} alt='hero'/>}
-          <h1><strong>{selectedAnimalDetail.name}</strong></h1>
-          <table>
+          <img className='modal-img' src={selectedAnimalDetail.photo} width="relative" height="200" alt='hero'/>}
+          <h1 className='modal-text'><strong>{selectedAnimalDetail.name}</strong></h1>
+          <table className="modal-table">
             <thead>
               <tr>
               <th>Organization</th>
@@ -111,9 +112,10 @@ export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo, 
               </tr>
             </tbody>
           </table>
+          </div>
           </>
         )}
-        <button onClick={handleCloseModal}>close</button>
+        <button className='Modal-Close' onClick={handleCloseModal}>❌</button>
       </ReactModal>
     </>
   );

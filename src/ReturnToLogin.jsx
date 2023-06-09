@@ -9,9 +9,7 @@ export function ReturnToLogin({token, setLoggedIn, loggedIn}) {
   };
 
   const handleReturnLoginSubmit = async () => {
-    
     localStorage.clear();
-    
     setLoggedIn(false);
   };
 console.log('what is loggedin?', loggedIn)
@@ -19,7 +17,6 @@ console.log('what is loggedin?', loggedIn)
     <>
       <h1>this is protected</h1>
       <button onClick={() => {
-        // homeRedirect();
         handleReturnLoginSubmit()
         homeRedirect();
       }}>go back to login</button>

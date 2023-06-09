@@ -9,16 +9,16 @@ export function Logout({ token, setLoggedIn, loggedIn }) {
     localStorage.clear();
     setLoggedIn(false);
     // if (!token) {
-      // navigate("/");
+    //   navigate("/");
     // }
 
   };
   return (
     <>
       {/* {!loggedIn && <Navigate to="/" />} */}
-      {loggedIn && (
+      {loggedIn && 
         <button onClick={handleLogoutSubmit}>logout</button>
-      )}
+      }
       
     </>
   );

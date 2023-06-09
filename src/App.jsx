@@ -25,7 +25,8 @@ function App() {
   const [animalTypes, setAnimalTypes] = useState([]);
   const [moreInfo, setMoreInfo] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedAnimalDetail, setSelectedAnimalDetail] = useState(null);
 
 
   return (
@@ -82,13 +83,17 @@ function App() {
                       searchType={searchType}
                       token={token}
                     />
-                    <DetailsModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
-                    <AnimalDetails searchContent={searchContent} isModalOpen={isModalOpen}/>
+                    {/* <DetailsModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/> */}
+                    {/* <AnimalDetails searchContent={searchContent} isModalOpen={isModalOpen}/> */}
                     <AnimalTableData
                       searchContent={searchContent}
                       moreInfo={moreInfo}
                       setMoreInfo={setMoreInfo}
                       token={token}
+                      setIsModalOpen={setIsModalOpen}
+                      isModalOpen={isModalOpen}
+                      setSelectedAnimalDetail={setSelectedAnimalDetail}
+                      selectedAnimalDetail={selectedAnimalDetail}
                     />
                     
                   </>

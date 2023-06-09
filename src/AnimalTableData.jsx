@@ -52,7 +52,7 @@ export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo, 
                         <img
                           src={x.photo}
                           width="100"
-                          height="100"
+                          height="relative"
                           alt="not available"
                         />
                       </td>

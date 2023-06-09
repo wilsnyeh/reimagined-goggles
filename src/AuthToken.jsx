@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./App.css"; 
 
 const AuthToken = ({ token, setToken, setLoggedIn, loggedIn }) => {
   const navigate = useNavigate();
@@ -66,12 +67,12 @@ const AuthToken = ({ token, setToken, setLoggedIn, loggedIn }) => {
   }
 
   return (
-    <div>
-      <input type="text" placeholder="username" />
-      <br></br>
-      <input type="text" placeholder="password" />
-      <br></br>
-      <button
+    <div className='login-container'>
+      <input className='login-input' type="text" placeholder="username" />
+      
+      <input className='login-input' type="text" placeholder="password" />
+      
+      <button className='login-button'
         type="submit"
         onClick={() => {
           userAuth();

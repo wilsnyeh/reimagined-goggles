@@ -25,7 +25,6 @@ const AuthToken = ({ token, setToken, setLoggedIn, loggedIn }) => {
       const json = await res.json();
       let token = json.access_token;
       setToken(token);
-      setLoggedIn(true);
       console.log('this is in authtoken, loggedin status',loggedIn)
       return `Bearer ${token}`;
       
@@ -61,7 +60,10 @@ const AuthToken = ({ token, setToken, setLoggedIn, loggedIn }) => {
       setToken(localToken);
     }
   }, []);
-
+  
+  const isLoggedIn = () => {
+    setLoggedIn(true);
+  }
 
   return (
     <div>
@@ -73,6 +75,7 @@ const AuthToken = ({ token, setToken, setLoggedIn, loggedIn }) => {
         type="submit"
         onClick={() => {
           userAuth();
+          isLoggedIn()
         }}
       >
         Login

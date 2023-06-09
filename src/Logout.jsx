@@ -7,15 +7,19 @@ export function Logout({ token, setLoggedIn, loggedIn }) {
 
   const handleLogoutSubmit = async () => {
     localStorage.clear();
-    if (!token) {
-      setLoggedIn(false);
-      navigate("/");
-    }
+    setLoggedIn(false);
+    // if (!token) {
+      // navigate("/");
+    // }
+
   };
   return (
     <>
       {/* {!loggedIn && <Navigate to="/" />} */}
-      <button onClick={handleLogoutSubmit}>logout</button>
+      {loggedIn && (
+        <button onClick={handleLogoutSubmit}>logout</button>
+      )}
+      
     </>
   );
 }

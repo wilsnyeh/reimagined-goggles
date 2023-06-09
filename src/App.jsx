@@ -46,7 +46,9 @@ function App() {
             path="/petfinder"
             element={
               <>
-                {token && loggedIn ? (
+                {token 
+                // && loggedIn 
+                ? (
                   <>
                     <Logout
                       token={token}
@@ -88,7 +90,7 @@ function App() {
                     <DetailsModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
                   </>
                 ) : 
-                <ReturnToLogin token={token} setLoggedIn={setLoggedIn}/>
+                <ReturnToLogin token={token} setLoggedIn={setLoggedIn} loggedIn={loggedIn}/>
                 }
               </>
             }

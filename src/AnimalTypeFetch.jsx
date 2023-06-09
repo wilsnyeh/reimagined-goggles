@@ -15,7 +15,6 @@ const AnimalTypeFetch = ({token, setAnimalTypes}) => {
         let typesArr = []
         for(let i = 0; i < content.types.length; i++) {
             typesArr.push(content.types[i]['name'])
-            // console.log('what is content here? in the loop',content.types[i]['name'])
         }
         setAnimalTypes(typesArr)
         console.log('what is content here? ootl',typesArr)

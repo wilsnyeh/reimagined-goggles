@@ -3,7 +3,7 @@ import pawvector from './assets/paw-print-vector-icon.jpg'
 import { handleMoreInfoClick } from './MoreInfoButton.jsx'
 
 export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo, token}) {
-  console.log(moreInfo)
+  
   // {!token ? <h1>grab a token</h1>  : null}
   return (
     <>

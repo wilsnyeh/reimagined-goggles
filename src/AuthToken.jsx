@@ -17,8 +17,8 @@ const AuthToken = ({ token, setToken, setLoggedIn, loggedIn }) => {
         },
         body: JSON.stringify({
           grant_type: "client_credentials",
-          client_id: "nf9oJjHIukN3IHtUdZRjJ5Kg5cgOTspvdBk2w8vo41IuFYJGm8",
-          client_secret: "sHPxRTdoXB0D2zfxHKLBo85hz8B38R9fd1xrpkwm",
+          client_id: "cWJAoFN567mRPOc10isZZMomu17mBvGlbEyRrSZOYLJZspuR0w",
+          client_secret: "N59RE4DeVfX9pCLIUBzR66nwXpxqGU0kGCbsV126",
         }),
       };
       const res = await fetch(petFinderUrl, options);
@@ -26,7 +26,7 @@ const AuthToken = ({ token, setToken, setLoggedIn, loggedIn }) => {
       let token = json.access_token;
       setToken(token);
       setLoggedIn(true);
-      // console.log('what does my token look like?', token)
+      console.log('this is in authtoken, loggedin status',loggedIn)
       return `Bearer ${token}`;
       
     } catch (error) {
@@ -45,11 +45,14 @@ const AuthToken = ({ token, setToken, setLoggedIn, loggedIn }) => {
   //   } 
   // }, [token]);
 
+  // this checks if token is true, then stores token into local storage and redirects
   useEffect(() => {
     if (token) {
       localStorage.setItem('token', token);
       navigate('/petfinder')
-    } 
+    } else {
+      navigate('/')
+    }
   }, [token]);
   //why didnt this throw an error before? it was trying to json parse the token
   useEffect(() => {

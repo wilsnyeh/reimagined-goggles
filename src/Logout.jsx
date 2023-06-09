@@ -4,16 +4,12 @@ import { useNavigate } from "react-router-dom";
 export function Logout({ token, setLoggedIn, loggedIn }) {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!loggedIn && !token) {
-      navigate("/");
-    }
-  }, [loggedIn]);
 
   const handleLogoutSubmit = async () => {
-    localStorage.clear(token);
+    localStorage.clear();
     if (!token) {
       setLoggedIn(false);
+      navigate("/");
     }
   };
   return (

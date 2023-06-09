@@ -37,7 +37,6 @@ const AnimalTypes = ({
 }) => 
 
 {
-  console.log('can this be my token?', token)
   const handleSearchChange = (e) => {
     setSearchType(e.target.value);
   };
@@ -112,7 +111,7 @@ const AnimalTypes = ({
         Authorization: `Bearer ${token}`,
       },
     };
-    console.log('what does my token look like here in animaltypes?', token)
+    
 
     const res = await fetch(petFinderSearchUrl, options);
     const content = await res.json();

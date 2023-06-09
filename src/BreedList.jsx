@@ -22,7 +22,7 @@ const BreedList = ({token, setBreedList, searchType}) => {
         }
         setBreedList(breedsList);
       } catch (error) {
-        console.error('this is breelist error', error)
+        console.error('this is breedlist error', error)
       }
       };
       return (

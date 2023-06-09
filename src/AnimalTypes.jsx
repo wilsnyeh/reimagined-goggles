@@ -136,6 +136,10 @@ const AnimalTypes = ({
       if (animalsPhotoUrl) {
         animalsPhotoUrl = animalPhoto["small"];
       }
+      // let animalsPhotoUrlLarge = animalPhoto;
+      // if (animalsPhotoUrlLarge) {
+      //   animalsPhotoUrlLarge = animalPhoto['medium']
+      // }
       let animal = {
         name: name,
         type: searchType,
@@ -144,6 +148,7 @@ const AnimalTypes = ({
         city: animalCity,
         state: animalState,
         photo: animalsPhotoUrl,
+        hero: animalsPhotoUrl,
         organization: organizationId,
         orgAnimalId: organizationAnimalId,
         email: organizationEmail,

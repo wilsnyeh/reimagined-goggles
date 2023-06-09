@@ -11,7 +11,9 @@ export function DetailsModal({isModalOpen, setIsModalOpen}) {
     }
     return (
         <div>
-            <button onClick={openModal}> open modal</button>
+            {!isModalOpen ?
+            <button onClick={openModal}> open modal</button> :
+            <button onClick={closeModal}> close modal</button>}
         </div>
     )
 }

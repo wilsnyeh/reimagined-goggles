@@ -48,7 +48,6 @@ export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo, 
                       />
                     </td>
                   ) : (
-                    <>
                       <td>
                         <img
                           src={x.photo}
@@ -57,7 +56,6 @@ export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo, 
                           alt="not available"
                         />
                       </td>
-                    </>
                   )}
                   </tr>
                   {/*this is where you want to render the animaldetails*/}

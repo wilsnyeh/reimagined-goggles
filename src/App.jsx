@@ -10,6 +10,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { Logout } from "./Logout";
 import { ReturnToLogin } from "./ReturnToLogin";
 import { DetailsModal } from "./DetailsModal";
+import { AnimalDetails } from "./AnimalDetails";
 
 function App() {
   const [token, setToken] = useState("");
@@ -81,13 +82,15 @@ function App() {
                       searchType={searchType}
                       token={token}
                     />
+                    <DetailsModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+                    <AnimalDetails searchContent={searchContent} isModalOpen={isModalOpen}/>
                     <AnimalTableData
                       searchContent={searchContent}
                       moreInfo={moreInfo}
                       setMoreInfo={setMoreInfo}
                       token={token}
                     />
-                    <DetailsModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+                    
                   </>
                 ) : 
                 <ReturnToLogin token={token} setLoggedIn={setLoggedIn} loggedIn={loggedIn}/>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useAuth } from "react";
 import "./App.css";
 import AuthToken from "./AuthToken";
 import BreedList from "./BreedList";

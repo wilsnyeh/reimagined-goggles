@@ -15,8 +15,8 @@ const AuthToken = ({ token, setToken, setLoggedIn, loggedIn }) => {
         },
         body: JSON.stringify({
           grant_type: "client_credentials",
-          client_id: "cWJAoFN567mRPOc10isZZMomu17mBvGlbEyRrSZOYLJZspuR0w",
-          client_secret: "N59RE4DeVfX9pCLIUBzR66nwXpxqGU0kGCbsV126",
+          client_id: process.env.REACT_APP_CLIENT_ID,
+          client_secret: process.env.REACT_APP_CLIENT_SECRET,
         }),
       };
       const res = await fetch(petFinderUrl, options);
@@ -61,6 +61,8 @@ const AuthToken = ({ token, setToken, setLoggedIn, loggedIn }) => {
   // the other being loggedIn may not be necessary, as a user may use just the token to navigate around the application
   // are there pitfalls to consider when we look at this approach?
   // another concept to consider is how JS is synchronous, in such that function calls unless specified, will run simultaneously, and that may not always be what we want to happen when we were attempting to render lots of data; and that perhaps the reason why some functions are 'failing' could be due to running simulatenously when in reality it requires an output of another function first
+
+  // useAuth to hold onto token, and when the token is needed useAuth to pass this around
   return (
     <div className='login-container'>
       <input className='login-input' type="text" placeholder="username" />

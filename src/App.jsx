@@ -8,10 +8,11 @@ import AnimalTypeFetch from "./AnimalTypeFetch";
 import { Route, Routes} from "react-router-dom";
 import { Logout } from "./Logout";
 import { ReturnToLogin } from "./ReturnToLogin";
+import { TokenProvider } from "./TokenContext";
 
 
 function App() {
-  const [token, setToken] = useState("");
+  // const [token, setToken] = useState("");
   const [searchType, setSearchType] = useState("");
   const [breedList, setBreedList] = useState([]);
   const [searchLocation, setSearchLocation] = useState("");
@@ -28,6 +29,7 @@ function App() {
 
   return (
     <>
+    <TokenProvider>
       <div className="App">
         <Routes>
           <Route
@@ -103,6 +105,7 @@ function App() {
           />
         </Routes>
       </div>
+      </TokenProvider>
     </>
   );
 }

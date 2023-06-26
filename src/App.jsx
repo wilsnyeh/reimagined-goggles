@@ -1,4 +1,4 @@
-import React, { useState, useAuth } from "react";
+import React, { useState, useAuth, useContext } from "react";
 import "./App.css";
 import AuthToken from "./AuthToken";
 import BreedList from "./BreedList";
@@ -8,11 +8,12 @@ import AnimalTypeFetch from "./AnimalTypeFetch";
 import { Route, Routes} from "react-router-dom";
 import { Logout } from "./Logout";
 import { ReturnToLogin } from "./ReturnToLogin";
-import { TokenProvider } from "./TokenContext";
+import { TokenContext, TokenProvider } from "./TokenContext";
 
 
 function App() {
   // const [token, setToken] = useState("");
+  const {token, setToken} = useContext(TokenContext)
   const [searchType, setSearchType] = useState("");
   const [breedList, setBreedList] = useState([]);
   const [searchLocation, setSearchLocation] = useState("");
@@ -36,8 +37,8 @@ function App() {
             path="/"
             element={
               <AuthToken
-                setToken={setToken}
-                token={token}
+                // setToken={setToken}
+                // token={token}
                 setLoggedIn={setLoggedIn}
                 loggedIn={loggedIn}
               />
@@ -50,7 +51,7 @@ function App() {
                 {token ? (
                   <>
                     <Logout
-                      token={token}
+                      // token={token}
                       loggedIn={loggedIn}
                       setLoggedIn={setLoggedIn}
                     />
@@ -63,7 +64,7 @@ function App() {
                       setSearchLocation={setSearchLocation}
                       breedList={breedList}
                       setBreedList={setBreedList}
-                      token={token}
+                      // token={token}
                       searchContent={searchContent}
                       setSearchContent={setSearchContent}
                       page={page}
@@ -78,13 +79,13 @@ function App() {
                     <BreedList
                       setBreedList={setBreedList}
                       searchType={searchType}
-                      token={token}
+                      // token={token}
                     />
                     <AnimalTableData
                       searchContent={searchContent}
                       moreInfo={moreInfo}
                       setMoreInfo={setMoreInfo}
-                      token={token}
+                      // token={token}
                       setIsModalOpen={setIsModalOpen}
                       isModalOpen={isModalOpen}
                       setSelectedAnimalDetail={setSelectedAnimalDetail}
@@ -94,10 +95,10 @@ function App() {
                   </>
                 ) : (
                   <ReturnToLogin
-                    token={token}
+                    // token={token}
                     setLoggedIn={setLoggedIn}
                     loggedIn={loggedIn}
-                    setToken={setToken}
+                    // setToken={setToken}
                   />
                 )}
               </>

@@ -1,4 +1,8 @@
-const AnimalTypeFetch = ({token, setAnimalTypes}) => {
+import { useContext } from "react";
+import { TokenContext } from "./TokenContext";
+
+const AnimalTypeFetch = ({ setAnimalTypes}) => {
+    const {token} = useContext(TokenContext)
     const fetchAnimalType = async () => {
         const animalTypeUrl = `https://api.petfinder.com/v2/types/`
 
@@ -17,6 +21,7 @@ const AnimalTypeFetch = ({token, setAnimalTypes}) => {
             typesArr.push(content.types[i]['name'])
         }
         setAnimalTypes(typesArr)
+        console.log('what is content here? ootl',typesArr)
     }
     return (
         <button type='submit' onClick={() => {

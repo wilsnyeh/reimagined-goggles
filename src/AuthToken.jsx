@@ -20,18 +20,22 @@ const AuthToken = ({
         },
         body: JSON.stringify({
           grant_type: "client_credentials",
-          client_id: process.env.REACT_APP_CLIENT_ID,
-          client_secret: process.env.REACT_APP_CLIENT_SECRET,
+          client_id: 
+          process.env.REACT_APP_CLIENT_ID,
+          client_secret: 
+          process.env.REACT_APP_CLIENT_SECRET,
         }),
       };
       const res = await fetch(petFinderUrl, options);
       const json = await res.json();
       let token = json.access_token;
       setToken(token);
+      console.log('what is my token?', token)
       return `Bearer ${token}`;
       
     } catch (error) {
       console.error("error on token", error);
+      
     }
   }
 

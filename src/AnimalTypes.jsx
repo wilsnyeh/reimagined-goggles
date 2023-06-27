@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { TokenContext } from "./TokenContext";
 
 const animalTypes = [
   "",
@@ -16,7 +17,6 @@ var usStates = new UsaStates();
 var statesAbbreviation = usStates.arrayOf("abbreviations");
 
 const AnimalTypes = ({
-  token,
   searchType,
   setSearchType,
   selectedBreedType,
@@ -37,6 +37,7 @@ const AnimalTypes = ({
 }) => 
 
 {
+  const {token} = useContext(TokenContext)
   const handleSearchChange = (e) => {
     setSearchType(e.target.value);
   };

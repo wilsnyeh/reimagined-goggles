@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router";
-import { useEffect } from "react";
-import { useContext } from "react";
+import { useEffect, useContext } from "react";
 import { TokenContext } from "./TokenContext";
 
 export function ReturnToLogin({setLoggedIn, loggedIn }) {

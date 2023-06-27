@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { TokenContext } from "./TokenContext";
 
-const BreedList = ({token, setBreedList, searchType}) => {
+const BreedList = ({setBreedList, searchType}) => {
+  const {token} = useContext(TokenContext)
+  
     const searchBreeds = async (e) => {
         e.preventDefault();
         let breedSearchUrl = `https://api.petfinder.com/v2/types/${searchType}/breeds`;

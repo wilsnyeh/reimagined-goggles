@@ -30,7 +30,6 @@ function App() {
 
   return (
     <>
-    <TokenProvider>
       <div className="App">
         <Routes>
           <Route
@@ -106,7 +105,6 @@ function App() {
           />
         </Routes>
       </div>
-      </TokenProvider>
     </>
   );
 }

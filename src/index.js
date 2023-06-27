@@ -4,13 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { TokenProvider } from './TokenContext';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
+    <TokenProvider>
     <BrowserRouter>
     <App />
     </BrowserRouter>
+    </TokenProvider>
   </React.StrictMode>
 );
 

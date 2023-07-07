@@ -12,7 +12,6 @@ import { TokenContext, TokenProvider } from "./TokenContext";
 
 
 function App() {
-  // const [token, setToken] = useState("");
   const {token, setToken} = useContext(TokenContext)
   const [searchType, setSearchType] = useState("");
   const [breedList, setBreedList] = useState([]);
@@ -36,8 +35,6 @@ function App() {
             path="/"
             element={
               <AuthToken
-                // setToken={setToken}
-                // token={token}
                 setLoggedIn={setLoggedIn}
                 loggedIn={loggedIn}
               />
@@ -50,7 +47,6 @@ function App() {
                 {token ? (
                   <>
                     <Logout
-                      // token={token}
                       loggedIn={loggedIn}
                       setLoggedIn={setLoggedIn}
                     />
@@ -63,7 +59,6 @@ function App() {
                       setSearchLocation={setSearchLocation}
                       breedList={breedList}
                       setBreedList={setBreedList}
-                      // token={token}
                       searchContent={searchContent}
                       setSearchContent={setSearchContent}
                       page={page}
@@ -78,13 +73,11 @@ function App() {
                     <BreedList
                       setBreedList={setBreedList}
                       searchType={searchType}
-                      // token={token}
                     />
                     <AnimalTableData
                       searchContent={searchContent}
                       moreInfo={moreInfo}
                       setMoreInfo={setMoreInfo}
-                      // token={token}
                       setIsModalOpen={setIsModalOpen}
                       isModalOpen={isModalOpen}
                       setSelectedAnimalDetail={setSelectedAnimalDetail}
@@ -94,10 +87,8 @@ function App() {
                   </>
                 ) : (
                   <ReturnToLogin
-                    // token={token}
                     setLoggedIn={setLoggedIn}
                     loggedIn={loggedIn}
-                    // setToken={setToken}
                   />
                 )}
               </>

@@ -3,9 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./App.css"; 
 import { TokenContext } from "./TokenContext";
 
-const AuthToken = ({ 
-  // token, setToken, 
-  setLoggedIn, loggedIn }) => {
+const AuthToken = ({ setLoggedIn, loggedIn }) => {
     
   const {token, setToken} = useContext(TokenContext)
   const navigate = useNavigate();

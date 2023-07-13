@@ -23,7 +23,7 @@ export default function AnimalTableDataMUI({ searchContent, setSelectedAnimalDet
     // searchContent && 
     searchContent && searchContent.map((x, i) => {
       return (
-        {id: i , animalName: `${x.name}`, type: `${x.type}`, animalBreed: `${x.breed} ?${x.breed2}`, animalLocation: `${x.city} ${x.state}`, 
+        {id: i , animalName: `${x.name}`, type: `${x.type}`, animalBreed: `${x.breed} ${x.breed2}`, animalLocation: `${x.city} ${x.state}`, 
         
         photos: `${x.photo}`
         // `${!x.photo ? (
@@ -49,16 +49,24 @@ export default function AnimalTableDataMUI({ searchContent, setSelectedAnimalDet
   const columns = [
     { field: 'animalName', headerName: 'Animal Name', width: 150 },
     { field: 'type', headerName: 'Type', width: 150 },
-    { field: 'animalBreed', headerName: 'Animal Breed', width: 150 },
+    { field: 'animalBreed', headerName: 'Animal Breed', width: 300 },
     { field: 'animalLocation', headerName: 'Animal Location', width: 150 },
-    { field: 'photos', headerName: 'Photos', width: 150, height: 'relative', renderCell: (params) => <img src={params.value} alt="something" />},
+    { field: 'photos', headerName: 'Photos', width: 150,
+    renderCell: (params) => {
+      if (params.value === 'null'){
+        return <img src={pawvector} width='relative' height='100' alt='vector of a paw'/>
+      }
+      return <img src={params.value} width='relative' height='100' alt="some real animals" />
+    }
+    },
   ];
   return (
     <>
 
-<div style={{ height: 300, width: '100%' }}>
+<div style={{ height: 500, width: '100%' }}>
       <DataGrid 
       rows={rows}
+      rowHeight={100}
 
       columns={columns} />
     </div>

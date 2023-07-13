@@ -5,14 +5,14 @@ import BreedList from "./BreedList";
 import AnimalTypes from "./AnimalTypes";
 import AnimalTableData from "./AnimalTableData";
 import AnimalTypeFetch from "./AnimalTypeFetch";
-import { Route, Routes} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Logout } from "./Logout";
 import { ReturnToLogin } from "./ReturnToLogin";
 import { TokenContext, TokenProvider } from "./TokenContext";
-
+import AnimalTableDataMUI from "./AnimalTableDataMUI";
 
 function App() {
-  const {token, setToken} = useContext(TokenContext)
+  const { token, setToken } = useContext(TokenContext);
   const [searchType, setSearchType] = useState("");
   const [breedList, setBreedList] = useState([]);
   const [searchLocation, setSearchLocation] = useState("");
@@ -34,10 +34,7 @@ function App() {
           <Route
             path="/"
             element={
-              <AuthToken
-                setLoggedIn={setLoggedIn}
-                loggedIn={loggedIn}
-              />
+              <AuthToken setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
             }
           />
           <Route
@@ -46,10 +43,7 @@ function App() {
               <>
                 {token ? (
                   <>
-                    <Logout
-                      loggedIn={loggedIn}
-                      setLoggedIn={setLoggedIn}
-                    />
+                    <Logout loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
                     <AnimalTypes
                       searchType={searchType}
                       setSearchType={setSearchType}
@@ -74,15 +68,19 @@ function App() {
                       setBreedList={setBreedList}
                       searchType={searchType}
                     />
-                    <AnimalTableData
+                    {/* <AnimalTableData
                       searchContent={searchContent}
-                      moreInfo={moreInfo}
-                      setMoreInfo={setMoreInfo}
                       setIsModalOpen={setIsModalOpen}
                       isModalOpen={isModalOpen}
                       setSelectedAnimalDetail={setSelectedAnimalDetail}
                       selectedAnimalDetail={selectedAnimalDetail}
-                      loggedIn={loggedIn}
+                    /> */}
+                    <AnimalTableDataMUI
+                      searchContent={searchContent}
+                      setIsModalOpen={setIsModalOpen}
+                      isModalOpen={isModalOpen}
+                      setSelectedAnimalDetail={setSelectedAnimalDetail}
+                      selectedAnimalDetail={selectedAnimalDetail}
                     />
                   </>
                 ) : (

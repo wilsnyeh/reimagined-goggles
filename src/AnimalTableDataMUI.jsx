@@ -1,9 +1,11 @@
 import "./App.css"; 
 import pawvector from './assets/paw-print-vector-icon.jpg';
 import ReactModal from "react-modal";
-// import { handleMoreInfoClick } from './MoreInfoButton.jsx'
+import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid'
+import React from "react";
 
-export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo, token, setSelectedAnimalDetail,selectedAnimalDetail,  setIsModalOpen, isModalOpen }) {
+
+export default function AnimalTableDataMUI({ searchContent, setSelectedAnimalDetail,selectedAnimalDetail,  setIsModalOpen, isModalOpen }) {
   
   const handleRowClick = (detail) => {
     setSelectedAnimalDetail(detail);
@@ -13,9 +15,54 @@ export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo, 
   const handleCloseModal = () => {
     setIsModalOpen(false)
   }
+
+
+  // ID needs to be dynamic for rows
+  // columns also need to be dynamic to handle the api fetch data
+  const rows = 
+    // searchContent && 
+    searchContent && searchContent.map((x, i) => {
+      return (
+        {id: i , animalName: `${x.name}`, type: `${x.type}`, animalBreed: `${x.breed} ?${x.breed2}`, animalLocation: `${x.city} ${x.state}`, 
+        
+        photos: `${x.photo}`
+        // `${!x.photo ? (
+        //   <img 
+        //   src={pawvector}
+        //   width='100'
+        //   height='100'
+        //   alt='not available2'/>
+        // ) :
+        // (
+        //   <img
+        //   src={x.photo}
+        //   width='100'
+        //   height='relative'
+        //   alt='some picture' />
+        // )}`
+      })
+    })
+    // { id: 1, animalName: 'Hello', type: 'World', animalBreed: 'something else', animalLocation: 'some', photos: 'thing'}, 
+  ;
+
+
+  const columns = [
+    { field: 'animalName', headerName: 'Animal Name', width: 150 },
+    { field: 'type', headerName: 'Type', width: 150 },
+    { field: 'animalBreed', headerName: 'Animal Breed', width: 150 },
+    { field: 'animalLocation', headerName: 'Animal Location', width: 150 },
+    { field: 'photos', headerName: 'Photos', width: 150 },
+  ];
   return (
     <>
-    <div className='table-container'>
+
+<div style={{ height: 300, width: '100%' }}>
+      <DataGrid 
+      rows={rows}
+
+      columns={columns} />
+    </div>
+    {/* <div className='table-container'>
       <table className="table-center">
         <thead>
           <tr>
@@ -25,13 +72,6 @@ export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo, 
             <th>Animal Location</th>
             <th>Photos</th>
             </tr>
-            {/* {moreInfo ? 
-            <tr>
-            <th>Organization Id</th>
-            <th>Animal Organization Id</th>
-            <th>Organization Email</th>
-            </tr>
-            : null} */}
         </thead>
         <tbody>
           {searchContent &&
@@ -67,15 +107,6 @@ export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo, 
                       </td>
                   )}
                   </tr>
-                  {/*this is where you want to render the animaldetails*/}
-                  {/* {moreInfo ? 
-                  <tr key={i}>
-                  <td>{x.organization}</td>
-                  {!x.orgAnimalId ? <td>❌</td> : <td>{x.orgAnimalId}</td>}
-                  <td>{x.email}</td>
-                </tr> : 
-                <button onClick={handleMoreInfoClick}> more info </button> 
-                } */}
                 </>
               );
             })}
@@ -115,7 +146,7 @@ export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo, 
           </>
         )}
         <button className='Modal-Close' onClick={handleCloseModal}>❌</button>
-      </ReactModal>
+      </ReactModal> */}
     </>
   );
 }

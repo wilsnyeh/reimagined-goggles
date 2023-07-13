@@ -20,11 +20,13 @@ export default function AnimalTableDataMUI({ searchContent, setSelectedAnimalDet
   // ID needs to be dynamic for rows
   // columns also need to be dynamic to handle the api fetch data
   const rows = 
+    // searchContent && 
     searchContent && searchContent.map((x, i) => {
       return (
-        {id:{i}, animalName: `${x.name}`, type: `${x.type}`, animalBreed: `${x.breed}`+`${x.breed2}`, animalLocation: `${x.city}`+`${x.state}`, 
+        {id: i , animalName: `${x.name}`, type: `${x.type}`, animalBreed: `${x.breed} ?${x.breed2}`, animalLocation: `${x.city} ${x.state}`, 
         
-        // photos: {!x.photo ? (
+        photos: `${x.photo}`
+        // `${!x.photo ? (
         //   <img 
         //   src={pawvector}
         //   width='100'
@@ -37,7 +39,7 @@ export default function AnimalTableDataMUI({ searchContent, setSelectedAnimalDet
         //   width='100'
         //   height='relative'
         //   alt='some picture' />
-        // )}
+        // )}`
       })
     })
     // { id: 1, animalName: 'Hello', type: 'World', animalBreed: 'something else', animalLocation: 'some', photos: 'thing'}, 

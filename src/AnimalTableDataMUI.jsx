@@ -51,7 +51,7 @@ export default function AnimalTableDataMUI({ searchContent, setSelectedAnimalDet
     { field: 'type', headerName: 'Type', width: 150 },
     { field: 'animalBreed', headerName: 'Animal Breed', width: 150 },
     { field: 'animalLocation', headerName: 'Animal Location', width: 150 },
-    { field: 'photos', headerName: 'Photos', width: 150 },
+    { field: 'photos', headerName: 'Photos', width: 150, height: 'relative', renderCell: (params) => <img src={params.value} alt="something" />},
   ];
   return (
     <>

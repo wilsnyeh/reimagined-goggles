@@ -28,6 +28,11 @@ function App() {
   const [selectedAnimalDetail, setSelectedAnimalDetail] = useState(null);
   const [animalRows, setAnimalRows] = useState([])
 
+  const handleAnimalDelete = (id) => {
+    const newList = searchContent.filter((item, index) => index !== id)
+    setSearchContent(newList)
+  }
+
   return (
     <>
       <div className="App">
@@ -85,6 +90,7 @@ function App() {
                       isModalOpen={isModalOpen}
                       setSelectedAnimalDetail={setSelectedAnimalDetail}
                       selectedAnimalDetail={selectedAnimalDetail}
+                      handleAnimalDelete={handleAnimalDelete}
                     />
                   </>
                 ) : (

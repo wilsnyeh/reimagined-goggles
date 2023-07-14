@@ -5,16 +5,16 @@ import { DataGrid, GridToolbar, gridFilteredSortedRowEntriesSelector} from '@mui
 import React from "react";
 
 
-export default function AnimalTableDataMUI({ searchContent, setSearchContent, setSelectedAnimalDetail,selectedAnimalDetail,  setIsModalOpen, isModalOpen }) {
+export default function AnimalTableDataMUI({ searchContent, setSearchContent, setSelectedAnimalDetail,selectedAnimalDetail,  setIsModalOpen, isModalOpen, handleAnimalDelete }) {
   
-  const handleRowClick = (detail) => {
-    setSelectedAnimalDetail(detail);
-    setIsModalOpen(true);
-  }
+  // const handleRowClick = (detail) => {
+  //   setSelectedAnimalDetail(detail);
+  //   setIsModalOpen(true);
+  // }
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false)
-  }
+  // const handleCloseModal = () => {
+  //   setIsModalOpen(false)
+  // }
 
   // const handleDeleteAnimal = () => {
   //   deleteOrder.call()
@@ -50,6 +50,14 @@ export default function AnimalTableDataMUI({ searchContent, setSearchContent, se
       return <img src={params.value} width='relative' height='100' alt="some real animals" />
     }
     },
+    {field: 'delete',
+  headerName: 'Delete',
+sortable: false,
+width: 100,
+disableClickEventBubbling: true,
+renderCell: (params)=> {
+  return <button onClick={()=> handleAnimalDelete(params.row.id)}>Delete</button>
+}}
   ];
   return (
     <>
@@ -67,8 +75,13 @@ export default function AnimalTableDataMUI({ searchContent, setSearchContent, se
       }}
       columns={columns} 
       />
+</div>
+</>
+  );
+}
+
       {/* <button type='button' onClick={handleDeleteAnimal}>delete</button> */}
-    </div>
+    //div here
     {/* 
       <ReactModal isOpen={isModalOpen} onRequestClose={handleCloseModal} ariaHideApp={false} className='Modal-Content' overlayClassName='Modal-Portal'>
         {selectedAnimalDetail &&  (
@@ -104,6 +117,6 @@ export default function AnimalTableDataMUI({ searchContent, setSearchContent, se
         )}
         <button className='Modal-Close' onClick={handleCloseModal}>❌</button>
       </ReactModal> */}
-    </>
-  );
-}
+//     </>
+//   );
+// }

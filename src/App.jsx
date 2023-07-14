@@ -26,12 +26,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAnimalDetail, setSelectedAnimalDetail] = useState(null);
-  const [animalRows, setAnimalRows] = useState([])
 
-  const handleAnimalDelete = (id) => {
-    const newList = searchContent.filter((item, index) => index !== id)
-    setSearchContent(newList)
-  }
 
   return (
     <>
@@ -69,8 +64,6 @@ function App() {
                       setTotalPages={setTotalPages}
                       loggedIn={loggedIn}
                       setLoggedIn={setLoggedIn}
-                      animalRows={animalRows}
-                      setAnimalRows={setAnimalRows}
                     />
                     <BreedList
                       setBreedList={setBreedList}
@@ -90,7 +83,6 @@ function App() {
                       isModalOpen={isModalOpen}
                       setSelectedAnimalDetail={setSelectedAnimalDetail}
                       selectedAnimalDetail={selectedAnimalDetail}
-                      handleAnimalDelete={handleAnimalDelete}
                     />
                   </>
                 ) : (

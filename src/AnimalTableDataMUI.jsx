@@ -5,7 +5,7 @@ import { DataGrid, GridToolbar, gridFilteredSortedRowEntriesSelector} from '@mui
 import React from "react";
 
 
-export default function AnimalTableDataMUI({ searchContent, setSearchContent, setSelectedAnimalDetail,selectedAnimalDetail,  setIsModalOpen, isModalOpen, handleAnimalDelete }) {
+export default function AnimalTableDataMUI({ searchContent, setSearchContent, setSelectedAnimalDetail,selectedAnimalDetail,  setIsModalOpen, isModalOpen }) {
   
   // const handleRowClick = (detail) => {
   //   setSelectedAnimalDetail(detail);
@@ -22,6 +22,10 @@ export default function AnimalTableDataMUI({ searchContent, setSearchContent, se
 
   // }
 
+  const handleAnimalDelete = (id) => {
+    const newList = searchContent.filter((item, index) => index !== id)
+    setSearchContent(newList)
+  }
   const rows = 
     searchContent && searchContent.map((x, i) => {
       return (

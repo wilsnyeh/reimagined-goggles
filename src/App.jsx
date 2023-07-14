@@ -26,7 +26,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAnimalDetail, setSelectedAnimalDetail] = useState(null);
-  const [animalRows, setAnimalRows] = useState([])
+
 
   return (
     <>
@@ -64,8 +64,6 @@ function App() {
                       setTotalPages={setTotalPages}
                       loggedIn={loggedIn}
                       setLoggedIn={setLoggedIn}
-                      animalRows={animalRows}
-                      setAnimalRows={setAnimalRows}
                     />
                     <BreedList
                       setBreedList={setBreedList}

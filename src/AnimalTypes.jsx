@@ -32,7 +32,9 @@ const AnimalTypes = ({
   totalPages,
   setTotalPages,
   submitted,
-  setSubmitted
+  setSubmitted, 
+  animalRows,
+  setAnimalRows,
 
 }) => 
 

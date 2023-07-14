@@ -1,11 +1,11 @@
 import "./App.css"; 
 import pawvector from './assets/paw-print-vector-icon.jpg';
 import ReactModal from "react-modal";
-import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid'
+import { DataGrid, GridToolbar, gridFilteredSortedRowEntriesSelector} from '@mui/x-data-grid'
 import React from "react";
 
 
-export default function AnimalTableDataMUI({ searchContent, setSelectedAnimalDetail,selectedAnimalDetail,  setIsModalOpen, isModalOpen }) {
+export default function AnimalTableDataMUI({ searchContent, setSearchContent, setSelectedAnimalDetail,selectedAnimalDetail,  setIsModalOpen, isModalOpen }) {
   
   const handleRowClick = (detail) => {
     setSelectedAnimalDetail(detail);
@@ -16,103 +16,60 @@ export default function AnimalTableDataMUI({ searchContent, setSelectedAnimalDet
     setIsModalOpen(false)
   }
 
+  // const handleDeleteAnimal = () => {
+  //   deleteOrder.call()
+  //   getOrders.refetch()
 
-  // ID needs to be dynamic for rows
-  // columns also need to be dynamic to handle the api fetch data
+  // }
+
   const rows = 
-    // searchContent && 
     searchContent && searchContent.map((x, i) => {
       return (
-        {id: i , animalName: `${x.name}`, type: `${x.type}`, animalBreed: `${x.breed} ?${x.breed2}`, animalLocation: `${x.city} ${x.state}`, 
-        
+        {id: i , animalName: `${x.name}`, type: `${x.type}`, animalBreed: `${x.breed} ${x.breed2}`, animalLocation: `${x.city} ${x.state}`, 
         photos: `${x.photo}`
-        // `${!x.photo ? (
-        //   <img 
-        //   src={pawvector}
-        //   width='100'
-        //   height='100'
-        //   alt='not available2'/>
-        // ) :
-        // (
-        //   <img
-        //   src={x.photo}
-        //   width='100'
-        //   height='relative'
-        //   alt='some picture' />
-        // )}`
       })
-    })
-    // { id: 1, animalName: 'Hello', type: 'World', animalBreed: 'something else', animalLocation: 'some', photos: 'thing'}, 
-  ;
+    });
 
 
   const columns = [
     { field: 'animalName', headerName: 'Animal Name', width: 150 },
     { field: 'type', headerName: 'Type', width: 150 },
-    { field: 'animalBreed', headerName: 'Animal Breed', width: 150 },
+    { field: 'animalBreed', headerName: 'Animal Breed', width: 300,
+    renderCell: (params) => {
+      if (!params.value) {
+        return ''
+      }
+    }
+   },
     { field: 'animalLocation', headerName: 'Animal Location', width: 150 },
-    { field: 'photos', headerName: 'Photos', width: 150 },
+    { field: 'photos', headerName: 'Photos', width: 150,
+    renderCell: (params) => {
+      if (params.value === 'null'){
+        return <img src={pawvector} width='relative' height='100' alt='vector of a paw'/>
+      }
+      return <img src={params.value} width='relative' height='100' alt="some real animals" />
+    }
+    },
   ];
   return (
     <>
 
-<div style={{ height: 300, width: '100%' }}>
+<div style={{ height: 500, width: '100%' }}>
       <DataGrid 
       rows={rows}
-
-      columns={columns} />
+      rowHeight={100}
+      slots={{toolbar: GridToolbar}}
+      slotProps={{
+        toolbar: {
+          showQuickFilter: true,
+          quickFilterProps:{debounceMs:500}
+        }
+      }}
+      columns={columns} 
+      />
+      {/* <button type='button' onClick={handleDeleteAnimal}>delete</button> */}
     </div>
-    {/* <div className='table-container'>
-      <table className="table-center">
-        <thead>
-          <tr>
-            <th>Animal Name</th>
-            <th>Type</th>
-            <th>Animal Breed</th>
-            <th>Animal Location</th>
-            <th>Photos</th>
-            </tr>
-        </thead>
-        <tbody>
-          {searchContent &&
-            searchContent.map((x, i) => {
-              return (
-                <>
-                <tr key={i} onClick={() => handleRowClick(x)}>
-                  <td>{x.name}</td>
-                  <td>{x.type}</td>
-                  <td>
-                    {x.breed} {x.breed2}
-                  </td>
-                  <td>
-                    {x.city} {x.state}
-                  </td>
-                  {!x.photo ? (
-                      <td>
-                      <img
-                        src={pawvector}
-                        width="100"
-                        height="100"
-                        alt="not available2"
-                      />
-                    </td>
-                  ) : (
-                      <td>
-                        <img
-                          src={x.photo}
-                          width="100"
-                          height="relative"
-                          alt="not available"
-                        />
-                      </td>
-                  )}
-                  </tr>
-                </>
-              );
-            })}
-        </tbody>
-      </table>
-      </div>
+    {/* 
       <ReactModal isOpen={isModalOpen} onRequestClose={handleCloseModal} ariaHideApp={false} className='Modal-Content' overlayClassName='Modal-Portal'>
         {selectedAnimalDetail &&  (
           <>

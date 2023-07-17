@@ -26,6 +26,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAnimalDetail, setSelectedAnimalDetail] = useState(null);
+  const [newName, setNewName] = useState('')
 
 
   return (
@@ -83,6 +84,8 @@ function App() {
                       isModalOpen={isModalOpen}
                       setSelectedAnimalDetail={setSelectedAnimalDetail}
                       selectedAnimalDetail={selectedAnimalDetail}
+                      newName={newName} 
+                      setNewName={setNewName}
                     />
                   </>
                 ) : (

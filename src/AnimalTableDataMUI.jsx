@@ -19,6 +19,8 @@ export default function AnimalTableDataMUI({
   selectedAnimalDetail,
   setIsModalOpen,
   isModalOpen,
+  newName, 
+  setNewName
 }) {
   const handleRowClick = (detail) => {
     const animalDeets = searchContent.filter(
@@ -38,10 +40,13 @@ export default function AnimalTableDataMUI({
   };
 
   const handleAnimalNameChange = (e) => {
-    setSearchContent({
-      ...searchContent,
-      name: e.target.value
-    });
+    e.preventDefault();
+    const index = searchContent.findIndex(animal=> animal.name === selectedAnimalDetail[0].name)
+    const newSearchContent = [...searchContent];
+    newSearchContent[index] = {...newSearchContent[index], name: newName};
+    setSearchContent(newSearchContent);
+    setIsModalOpen(false);
+    setNewName('')
   }
 
   const style = {
@@ -134,7 +139,7 @@ export default function AnimalTableDataMUI({
       },
     },
   ];
-  console.log('this is supposed to be searchContent', searchContent)
+
 
   return (
     <>
@@ -167,17 +172,16 @@ export default function AnimalTableDataMUI({
                   />
                   <br></br>
                   <form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      setIsModalOpen(false);
-                    }}
+                    onSubmit={handleAnimalNameChange}
                   >
                     <Stack spacing={2}>
                       <FormControl>
                         <FormLabel>Name Changer</FormLabel>
-                        <input placeholder='New Name'></input>
+                        <input value={newName}
+                        onChange={(e)=> setNewName(e.target.value)}
+                        placeholder='New Name'></input>
                       </FormControl>
-                      <button onSubmit={handleAnimalNameChange}>Submit</button>
+                      <button type='submit'>Submit</button>
                     </Stack>
                   </form>
                 </div>

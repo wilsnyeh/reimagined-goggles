@@ -5,12 +5,12 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import React from "react";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+// import Typography from "@mui/material/Typography";
 import FormControl from '@mui/joy/FormControl';
 import Stack from '@mui/joy/Stack';
 import FormLabel from '@mui/joy/FormLabel';
 import ModalDialog from "@mui/joy/ModalDialog";
-import EditIcon from '@mui/icons-material/Edit';
+// import EditIcon from '@mui/icons-material/Edit';
 
 export default function AnimalTableDataMUI({
   searchContent,
@@ -41,14 +41,14 @@ export default function AnimalTableDataMUI({
 
   const handleAnimalNameChange = (e) => {
     e.preventDefault();
-    const index = searchContent.findIndex(animal=> animal.name === selectedAnimalDetail[0].name)
+    const index = searchContent.findIndex(animal=> animal.name === selectedAnimalDetail[0]['name'])
     const newSearchContent = [...searchContent];
     newSearchContent[index] = {...newSearchContent[index], name: newName};
     setSearchContent(newSearchContent);
     setIsModalOpen(false);
-    setNewName('')
   }
 
+  // selectedAnimalDetail[0]['name']
   const style = {
     position: "absolute",
     top: "50%",
@@ -60,9 +60,7 @@ export default function AnimalTableDataMUI({
     boxShadow: 24,
     p: 4,
   };
-  // const handleAnimalDetails =(id) => {
 
-  // }
   const rows =
     searchContent &&
     searchContent.map((x, i) => {

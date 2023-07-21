@@ -1,16 +1,15 @@
 import "./App.css";
 import pawvector from "./assets/paw-print-vector-icon.jpg";
-// import ReactModal from "react-modal";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import React from "react";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
-// import Typography from "@mui/material/Typography";
 import FormControl from '@mui/joy/FormControl';
 import Stack from '@mui/joy/Stack';
 import FormLabel from '@mui/joy/FormLabel';
 import ModalDialog from "@mui/joy/ModalDialog";
-// import EditIcon from '@mui/icons-material/Edit';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function AnimalTableDataMUI({
   searchContent,
@@ -41,14 +40,17 @@ export default function AnimalTableDataMUI({
 
   const handleAnimalNameChange = (e) => {
     e.preventDefault();
+    //declare index, as the searchcontent that matches our selection
     const index = searchContent.findIndex(animal=> animal.name === selectedAnimalDetail[0]['name'])
+    //declare newsearchcontent with the rest of the data from search content
     const newSearchContent = [...searchContent];
+    //designates specific searchcontent to be the newsearchcontent obj, and name, to be the state of newName
     newSearchContent[index] = {...newSearchContent[index], name: newName};
+    //setting the new state of searchcontent
     setSearchContent(newSearchContent);
     setIsModalOpen(false);
   }
 
-  // selectedAnimalDetail[0]['name']
   const style = {
     position: "absolute",
     top: "50%",
@@ -116,10 +118,10 @@ export default function AnimalTableDataMUI({
     {
       field: "animalDetails",
       headerName: "Animal Details",
-      width: 150,
+      width: 100,
       renderCell: (params) => {
         return (
-          <button onClick={() => handleRowClick(params.row.id)}>Details</button>
+          <Button variant="outlined" onClick={() => handleRowClick(params.row.id)}>Details</Button>
         );
       },
     },
@@ -127,12 +129,12 @@ export default function AnimalTableDataMUI({
       field: "delete",
       headerName: "Delete",
       sortable: false,
-      width: 100,
+      width: 125,
       renderCell: (params) => {
         return (
-          <button onClick={() => handleAnimalDelete(params.row.id)}>
+          <Button variant="outlined" color='error' startIcon={<DeleteIcon />} onClick={() => handleAnimalDelete(params.row.id)}>
             Delete
-          </button>
+          </Button>
         );
       },
     },
@@ -179,7 +181,7 @@ export default function AnimalTableDataMUI({
                         onChange={(e)=> setNewName(e.target.value)}
                         placeholder='New Name'></input>
                       </FormControl>
-                      <button type='submit'>Submit</button>
+                      <Button variant="outlined" type='submit'>Submit</Button>
                     </Stack>
                   </form>
                 </div>
@@ -191,45 +193,3 @@ export default function AnimalTableDataMUI({
     </>
   );
 }
-
-//div here
-{
-  /* 
-      <ReactModal isOpen={isModalOpen} onRequestClose={handleCloseModal} ariaHideApp={false} className='Modal-Content' overlayClassName='Modal-Portal'>
-        {selectedAnimalDetail &&  (
-          <>
-          <div>
-          {!selectedAnimalDetail.photo ? 
-                      <img className='modal-img'
-                        src={pawvector}
-                        width="200"
-                        height="200"
-                        alt="not available2"
-                      /> :
-          <img className='modal-img' src={selectedAnimalDetail.photo} width="relative" height="200" alt='hero'/>}
-          <h1 className='modal-text'><strong>{selectedAnimalDetail.name}</strong></h1>
-          <table className="modal-table">
-            <thead>
-              <tr>
-              <th>Organization</th>
-              <th>Contact Email</th>
-              <th>Animal ID</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr key={selectedAnimalDetail}>
-              <td>{selectedAnimalDetail.organization}</td>
-              {!selectedAnimalDetail.email ? <td>❌</td> : <td>{selectedAnimalDetail.email}</td>}
-              {!selectedAnimalDetail.orgAnimalId ? <td>❌</td> : <td>{selectedAnimalDetail.orgAnimalId}</td>}
-              </tr>
-            </tbody>
-          </table>
-          </div>
-          </>
-        )}
-        <button className='Modal-Close' onClick={handleCloseModal}>❌</button>
-      </ReactModal> */
-}
-//     </>
-//   );
-// }

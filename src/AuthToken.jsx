@@ -28,7 +28,7 @@ const AuthToken = ({ setLoggedIn, loggedIn }) => {
       const json = await res.json();
       let token = json.access_token;
       setToken(token);
-      console.log('what is my token?', token)
+      // console.log('what is my token?', token)
       return `Bearer ${token}`;
       
     } catch (error) {

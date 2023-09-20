@@ -25,13 +25,6 @@ export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo, 
             <th>Animal Location</th>
             <th>Photos</th>
             </tr>
-            {/* {moreInfo ? 
-            <tr>
-            <th>Organization Id</th>
-            <th>Animal Organization Id</th>
-            <th>Organization Email</th>
-            </tr>
-            : null} */}
         </thead>
         <tbody>
           {searchContent &&
@@ -67,15 +60,6 @@ export default function AnimalTableData({ searchContent, moreInfo, setMoreInfo, 
                       </td>
                   )}
                   </tr>
-                  {/*this is where you want to render the animaldetails*/}
-                  {/* {moreInfo ? 
-                  <tr key={i}>
-                  <td>{x.organization}</td>
-                  {!x.orgAnimalId ? <td>❌</td> : <td>{x.orgAnimalId}</td>}
-                  <td>{x.email}</td>
-                </tr> : 
-                <button onClick={handleMoreInfoClick}> more info </button> 
-                } */}
                 </>
               );
             })}

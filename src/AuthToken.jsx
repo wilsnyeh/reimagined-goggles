@@ -28,7 +28,6 @@ const AuthToken = ({ setLoggedIn, loggedIn }) => {
       const json = await res.json();
       let token = json.access_token;
       setToken(token);
-      // console.log('what is my token?', token)
       return `Bearer ${token}`;
       
     } catch (error) {
@@ -47,7 +46,6 @@ const AuthToken = ({ setLoggedIn, loggedIn }) => {
       navigate('/')
     }
   }, [token]);
-  //why didnt this throw an error before? it was trying to json parse the token
   useEffect(() => {
     const localToken = localStorage.getItem('token');
     localStorage.getItem('LoggedIn')
@@ -59,15 +57,6 @@ const AuthToken = ({ setLoggedIn, loggedIn }) => {
   const isLoggedIn = () => {
     setLoggedIn(true);
   }
-
-  // to keep the authentication process more concise 
-  // we may approach this a few ways
-  // when token is set, to set loggedIn true
-  // and use loggedIn to validate access around other areas of the application
-  // are there pitfalls to consider when we look at this approach?
-  // the other being loggedIn may not be necessary, as a user may use just the token to navigate around the application
-  // are there pitfalls to consider when we look at this approach?
-  // another concept to consider is how JS is synchronous, in such that function calls unless specified, will run simultaneously, and that may not always be what we want to happen when we were attempting to render lots of data; and that perhaps the reason why some functions are 'failing' could be due to running simulatenously when in reality it requires an output of another function first
 
   // useAuth to hold onto token, and when the token is needed useAuth to pass this around
   return (

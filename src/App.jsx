@@ -70,13 +70,6 @@ function App() {
                       setBreedList={setBreedList}
                       searchType={searchType}
                     />
-                    {/* <AnimalTableData
-                      searchContent={searchContent}
-                      setIsModalOpen={setIsModalOpen}
-                      isModalOpen={isModalOpen}
-                      setSelectedAnimalDetail={setSelectedAnimalDetail}
-                      selectedAnimalDetail={selectedAnimalDetail}
-                    /> */}
                     <AnimalTableDataMUI
                       searchContent={searchContent}
                       setSearchContent={setSearchContent}

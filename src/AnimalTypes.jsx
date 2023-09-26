@@ -139,10 +139,6 @@ const AnimalTypes = ({
       if (animalsPhotoUrl) {
         animalsPhotoUrl = animalPhoto["small"];
       }
-      // let animalsPhotoUrlLarge = animalPhoto;
-      // if (animalsPhotoUrlLarge) {
-      //   animalsPhotoUrlLarge = animalPhoto['medium']
-      // }
       let animal = {
         name: name,
         type: searchType,
@@ -194,11 +190,6 @@ const AnimalTypes = ({
       );
     }
   };
-  // try {
-  //   fetchAnimalData();
-  // }catch(error) {
-  //   console.error('this is animal search error', error)
-  // }
   
   return (
     <div>

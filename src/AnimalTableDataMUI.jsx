@@ -170,6 +170,17 @@ export default function AnimalTableDataMUI({
                     height="100"
                     alt="some real animals"
                   />
+                  <table>
+                    <thead>
+                    <th>Organization</th>
+                    <th>Contact Email</th>
+                    <th>Animal ID</th>
+                    </thead>
+                    <tbody>
+                      <tr>hello</tr>
+                    </tbody>
+                 
+                  </table>
                   <br></br>
                   <form
                     onSubmit={handleAnimalNameChange}

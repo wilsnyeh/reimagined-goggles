@@ -177,7 +177,7 @@ export default function AnimalTableDataMUI({
                     <th>Animal ID</th>
                     </thead>
                     <tbody>
-                      <tr>testing</tr>
+                      <tr>what the actual</tr>
                     </tbody>
                  
                   </table>

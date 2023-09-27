@@ -134,6 +134,7 @@ const AnimalTypes = ({
       const organizationId = animalContentIdx["organization_id"];
       const organizationAnimalId = animalContentIdx["organization_animal_id"];
       const organizationEmail = animalContentIdx["contact"]["email"];
+      const organizationPhone = animalContentIdx["contact"]["phone"];
 
       let animalsPhotoUrl = animalPhoto;
       if (animalsPhotoUrl) {
@@ -151,6 +152,7 @@ const AnimalTypes = ({
         organization: organizationId,
         orgAnimalId: organizationAnimalId,
         email: organizationEmail,
+        phone: organizationPhone,
       };
 
       animals.push(animal);

@@ -188,12 +188,13 @@ export default function AnimalTableDataMUI({
                     <th>Animal ID</th>
                     </thead>
                     <tbody>
-                      <tr>{selectedAnimalDetail[0]["organization_id"]}</tr>
-                      <tr>{selectedAnimalDetail[0]['contact']}</tr>
-                      <tr>{selectedAnimalDetail[0]['contact']}</tr>
-                      <tr>{selectedAnimalDetail[0]['organization_animal_id']}</tr>
+                      <tr>
+                        <td>{selectedAnimalDetail[0]["organization"]}</td>
+                        <td>{selectedAnimalDetail[0]['email']}</td>
+                        <td>{selectedAnimalDetail[0]['phone']}</td>
+                        <td>{selectedAnimalDetail[0]['orgAnimalId']}</td>
+                      </tr>
                     </tbody>
-                 
                   </table>
                   <br></br>
                   <form

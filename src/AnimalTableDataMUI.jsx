@@ -164,20 +164,34 @@ export default function AnimalTableDataMUI({
               <Box sx={style}>
                 <div className="modal-text">
                   <h1>{selectedAnimalDetail[0]["name"]}</h1>
+                  {!selectedAnimalDetail[0]["photo"] ? (
+                    <img
+                    className="modal-img"
+                    src={pawvector}
+                    width="200"
+                    height="200"
+                    alt="not available2"
+                  />
+                  ) : (
                   <img
                     src={selectedAnimalDetail[0]["photo"]}
                     width="relative"
                     height="100"
                     alt="some real animals"
                   />
+                  )}
                   <table>
                     <thead>
                     <th>Organization</th>
                     <th>Contact Email</th>
+                    <th>Contact Phone</th>
                     <th>Animal ID</th>
                     </thead>
                     <tbody>
-                      <tr>what the actual</tr>
+                      <tr>{selectedAnimalDetail[0]["organization_id"]}</tr>
+                      <tr>{selectedAnimalDetail[0]['contact']}</tr>
+                      <tr>{selectedAnimalDetail[0]['contact']}</tr>
+                      <tr>{selectedAnimalDetail[0]['organization_animal_id']}</tr>
                     </tbody>
                  
                   </table>

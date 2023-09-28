@@ -1,7 +1,6 @@
 import "./App.css";
 import pawvector from "./assets/paw-print-vector-icon.jpg";
 import ReactModal from "react-modal";
-// import { handleMoreInfoClick } from './MoreInfoButton.jsx'
 
 export default function AnimalTableData({
   searchContent,

@@ -132,3 +132,7 @@ th, td {
     top:0;
     right:0;
 }
+
+th, td {
+  padding-left: 20px;
+}

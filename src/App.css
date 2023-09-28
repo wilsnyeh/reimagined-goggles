@@ -36,3 +36,103 @@
     transform: rotate(360deg);
   }
 }
+
+.table-container {
+  width: 80%;
+  margin: 0 auto;
+}
+.table-center th, .table-center td {
+  text-align: center;
+  margin:0 auto;
+  border-spacing: 0 10px;
+  padding: 10;
+  border: 1px solid #ccc;
+  table-layout: fixed;
+  width: 30%
+}
+
+.modal-table {
+  text-align: center;
+  margin:0 auto;
+}
+
+.modal-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.modal-text {
+  text-align: center;
+}
+
+th, td {
+  word-wrap: break-word;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  height: 100vh;
+  text-align: center; 
+  flex-direction: column;
+}
+
+.login-input,
+.login-button {
+  margin: 2px
+}
+
+.login-button {
+  padding: 10px 15px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  background: rgb(243, 127, 160);
+}
+
+.Modal-Portal > div {
+  background-color: rgb(243, 127, 160);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Modal-Content {
+  position: relative;
+  width:60%; 
+  height: 45%; 
+  background: white;
+  outline: none;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.Modal-Close {
+    line-height: 12px;
+    width: 30px;
+    font-size: 8pt;
+    font-family: tahoma;
+    margin-top: 5px;
+    margin-right: 5px;
+    position:absolute;
+    top:0;
+    right:0;
+}
+
+th, td {
+  padding-left: 20px;
+}

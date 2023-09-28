@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { TokenContext } from "./TokenContext";
 
-const BreedList = ({token, setBreedList}) => {
+const BreedList = ({setBreedList, searchType}) => {
+  const {token} = useContext(TokenContext)
+  
     const searchBreeds = async (e) => {
         e.preventDefault();
-        let breedSearchUrl = "https://api.petfinder.com/v2/types/dog/breeds";
+        let breedSearchUrl = `https://api.petfinder.com/v2/types/${searchType}/breeds`;
         let breedSearchOptions = {
           method: "GET",
           headers: {
@@ -11,16 +14,19 @@ const BreedList = ({token, setBreedList}) => {
             Authorization: `Bearer ${token}`,
           },
         };
+        try{
         const res = await fetch(breedSearchUrl, breedSearchOptions);
         const content = await res.json();
-    
         let breedsList = [];
-        let dogBreeds = content["breeds"];
-        for (let i = 0; i < dogBreeds.length; i++) {
-          const listOfDogBreeds = dogBreeds[i]["name"];
-          breedsList.push(listOfDogBreeds);
+        let breedTypes = content["breeds"];
+        for (let i = 0; i < breedTypes.length; i++) {
+          const listOfBreeds = breedTypes[i]["name"];
+          breedsList.push(listOfBreeds);
         }
         setBreedList(breedsList);
+      } catch (error) {
+        console.error('this is breedlist error', error)
+      }
       };
       return (
         <div style={{paddingBottom:25}}>
@@ -29,7 +35,6 @@ const BreedList = ({token, setBreedList}) => {
             >get breeds</button>
         </div>
       )
-    
 }
 
 export default BreedList

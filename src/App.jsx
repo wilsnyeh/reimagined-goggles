@@ -3,12 +3,10 @@ import "./App.css";
 import AuthToken from "./AuthToken";
 import BreedList from "./BreedList";
 import AnimalTypes from "./AnimalTypes";
-import AnimalTableData from "./AnimalTableData";
-import AnimalTypeFetch from "./AnimalTypeFetch";
 import { Route, Routes } from "react-router-dom";
 import { Logout } from "./Logout";
 import { ReturnToLogin } from "./ReturnToLogin";
-import { TokenContext, TokenProvider } from "./TokenContext";
+import { TokenContext } from "./TokenContext";
 import AnimalTableDataMUI from "./AnimalTableDataMUI";
 
 function App() {
@@ -21,8 +19,6 @@ function App() {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [animalTypes, setAnimalTypes] = useState([]);
-  const [moreInfo, setMoreInfo] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAnimalDetail, setSelectedAnimalDetail] = useState(null);

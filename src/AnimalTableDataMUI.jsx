@@ -70,7 +70,7 @@ export default function AnimalTableDataMUI({
         id: i,
         animalName: `${x.name}`,
         type: `${x.type}`,
-        animalBreed: `${x.breed} ${x.breed2}`,
+        animalBreed: `${x.breed} ${x.breed2 ? `${x.breed2}` : ""}` ,
         animalLocation: `${x.city} ${x.state}`,
         photos: `${x.photo}`,
       };

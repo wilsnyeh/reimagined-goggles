@@ -101,7 +101,7 @@ export default function AnimalTableDataMUI({
               src={pawvector}
               width="relative"
               height="100"
-              alt="vector of a paw"
+              alt="vector of a pawprint"
             />
           );
         }

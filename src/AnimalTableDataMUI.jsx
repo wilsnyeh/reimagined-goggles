@@ -168,8 +168,8 @@ export default function AnimalTableDataMUI({
                     <img
                     className="modal-img"
                     src={pawvector}
-                    width="200"
-                    height="200"
+                    width="100"
+                    height="relative"
                     alt="not available2"
                   />
                   ) : (

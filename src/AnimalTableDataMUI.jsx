@@ -76,6 +76,13 @@ export default function AnimalTableDataMUI({
       };
     });
 
+  const modalCols = [
+    { field: "organization", headerName: "Organization", width: 150, editable: false},
+    { field: "contactEmail", headerName: "Contact Email", width: 150, editable: false},
+    { field: "contactPhone", headerName: "Contact Phone", width: 150, editable: false}, 
+    { field: "animalId", headerName: "Animal ID", width: 150, editable: false},
+  ]
+
   const columns = [
     { field: "animalName", headerName: "Animal Name", width: 150, editable: true},
     { field: "type", headerName: "Type", width: 150 },

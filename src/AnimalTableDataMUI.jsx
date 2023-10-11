@@ -87,8 +87,11 @@ export default function AnimalTableDataMUI({
     selectedAnimalDetail && 
     selectedAnimalDetail.map((x,i) => {
       return {
-        photo: selectedAnimalDetail[0]["photo"],
-        name: selectedAnimalDetail[0]['name']
+        id: i,
+        organization: `${x.organization}`, 
+        email: `${x.contactEmail}`, 
+        phone: `${x.contactPhone}`, 
+        animalId: `${x.animalId}`
       }
     })
   
@@ -197,6 +200,11 @@ export default function AnimalTableDataMUI({
                     alt="some real animals"
                   />
                   )}
+                  <DataGrid
+                    rows={modalRows}
+                    columns={modalCols}
+
+                  />
                   <table>
                     <thead>
                     <th>Organization</th>

@@ -83,6 +83,19 @@ export default function AnimalTableDataMUI({
     { field: "animalId", headerName: "Animal ID", width: 150, editable: false},
   ]
 
+  const modalRows = 
+    selectedAnimalDetail && 
+    selectedAnimalDetail.map((x,i) => {
+      return {
+        id: i,
+        organization: `${x.organization}`, 
+        email: `${x.email}`, 
+        phone: `${x.contactPhone}`, 
+        animalId: `${x.animalId}`
+      }
+    })
+  
+
   const columns = [
     { field: "animalName", headerName: "Animal Name", width: 150, editable: true},
     { field: "type", headerName: "Type", width: 150 },
@@ -187,6 +200,11 @@ export default function AnimalTableDataMUI({
                     alt="some real animals"
                   />
                   )}
+                  <DataGrid
+                    rows={modalRows}
+                    columns={modalCols}
+
+                  />
                   <table>
                     <thead>
                     <th>Organization</th>
@@ -204,19 +222,19 @@ export default function AnimalTableDataMUI({
                     </tbody>
                   </table>
                   <br></br>
-                  <form
+                  {/* <form
                     onSubmit={handleAnimalNameChange}
                   >
                     <Stack spacing={2}>
-                      {/* <FormControl>
+                      <FormControl>
                         <FormLabel>Name Changer</FormLabel>
                         <input value={newName}
                         onChange={(e)=> setNewName(e.target.value)}
                         placeholder='New Name'></input>
-                      </FormControl> */}
+                      </FormControl>
                       <Button variant="outlined" type='submit'>Submit</Button>
                     </Stack>
-                  </form>
+                  </form> */}
                 </div>
               </Box>
             </>

@@ -89,7 +89,7 @@ export default function AnimalTableDataMUI({
       return {
         id: i,
         organization: `${x.organization}`, 
-        email: `${x.contactEmail}`, 
+        email: `${x.email}`, 
         phone: `${x.contactPhone}`, 
         animalId: `${x.animalId}`
       }
@@ -222,19 +222,19 @@ export default function AnimalTableDataMUI({
                     </tbody>
                   </table>
                   <br></br>
-                  <form
+                  {/* <form
                     onSubmit={handleAnimalNameChange}
                   >
                     <Stack spacing={2}>
-                      {/* <FormControl>
+                      <FormControl>
                         <FormLabel>Name Changer</FormLabel>
                         <input value={newName}
                         onChange={(e)=> setNewName(e.target.value)}
                         placeholder='New Name'></input>
-                      </FormControl> */}
+                      </FormControl>
                       <Button variant="outlined" type='submit'>Submit</Button>
                     </Stack>
-                  </form>
+                  </form> */}
                 </div>
               </Box>
             </>

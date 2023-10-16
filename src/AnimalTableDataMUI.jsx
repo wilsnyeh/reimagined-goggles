@@ -221,20 +221,6 @@ export default function AnimalTableDataMUI({
                       </tr>
                     </tbody>
                   </table>
-                  <br></br>
-                  {/* <form
-                    onSubmit={handleAnimalNameChange}
-                  >
-                    <Stack spacing={2}>
-                      <FormControl>
-                        <FormLabel>Name Changer</FormLabel>
-                        <input value={newName}
-                        onChange={(e)=> setNewName(e.target.value)}
-                        placeholder='New Name'></input>
-                      </FormControl>
-                      <Button variant="outlined" type='submit'>Submit</Button>
-                    </Stack>
-                  </form> */}
                 </div>
               </Box>
             </>

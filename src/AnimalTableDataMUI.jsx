@@ -4,12 +4,12 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import React from "react";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
-import FormControl from '@mui/joy/FormControl';
-import Stack from '@mui/joy/Stack';
-import FormLabel from '@mui/joy/FormLabel';
+import FormControl from "@mui/joy/FormControl";
+import Stack from "@mui/joy/Stack";
+import FormLabel from "@mui/joy/FormLabel";
 import ModalDialog from "@mui/joy/ModalDialog";
-import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function AnimalTableDataMUI({
   searchContent,
@@ -18,8 +18,8 @@ export default function AnimalTableDataMUI({
   selectedAnimalDetail,
   setIsModalOpen,
   isModalOpen,
-  newName, 
-  setNewName
+  newName,
+  setNewName,
 }) {
   const handleRowClick = (detail) => {
     const animalDeets = searchContent.filter(
@@ -41,15 +41,17 @@ export default function AnimalTableDataMUI({
   const handleAnimalNameChange = (e) => {
     e.preventDefault();
     //declare index, as the searchcontent that matches our selection
-    const index = searchContent.findIndex(animal=> animal.name === selectedAnimalDetail[0]['name'])
+    const index = searchContent.findIndex(
+      (animal) => animal.name === selectedAnimalDetail[0]["name"]
+    );
     //declare newsearchcontent with the rest of the data from search content
     const newSearchContent = [...searchContent];
     //designates specific searchcontent to be the newsearchcontent obj, and name, to be the state of newName
-    newSearchContent[index] = {...newSearchContent[index], name: newName};
+    newSearchContent[index] = { ...newSearchContent[index], name: newName };
     //setting the new state of searchcontent
     setSearchContent(newSearchContent);
     setIsModalOpen(false);
-  }
+  };
 
   const style = {
     position: "absolute",
@@ -63,41 +65,61 @@ export default function AnimalTableDataMUI({
     p: 4,
   };
 
-  const rows =
-    searchContent &&
-    searchContent.map((x, i) => {
+  
+  const modalCols = [
+    {
+      field: "organization",
+      headerName: "Organization",
+      width: 125,
+      editable: false,
+    },
+    {
+      field: "contactEmail",
+      headerName: "Contact Email",
+      width: 400,
+      editable: false,
+    },
+    {
+      field: "contactPhone",
+      headerName: "Contact Phone",
+      width: 150,
+      editable: false,
+    },
+    { field: "animalId", headerName: "Animal ID", width: 150, editable: false },
+  ];
+
+  const modalRows =
+  selectedAnimalDetail &&
+    selectedAnimalDetail.map((x, i) => {
       return {
         id: i,
-        animalName: `${x.name}`,
-        type: `${x.type}`,
-        animalBreed: `${x.breed} ${x.breed2 ? `${x.breed2}` : ""}` ,
-        animalLocation: `${x.city} ${x.state}`,
-        photos: `${x.photo}`,
+        organization: `${x.organization ? `${x.organization}` : "N/A"}`,
+        contactEmail: `${x.email ? `${x.email}` : "N/A"}`,
+        contactPhone: `${x.phone ? `${x.phone}` : "N/A"}`,
+        animalId: `${x.orgAnimalId ? `${x.orgAnimalId}` : "N/A"}`,
       };
     });
-
-  const modalCols = [
-    { field: "organization", headerName: "Organization", width: 150, editable: false},
-    { field: "contactEmail", headerName: "Contact Email", width: 150, editable: false},
-    { field: "contactPhone", headerName: "Contact Phone", width: 150, editable: false}, 
-    { field: "animalId", headerName: "Animal ID", width: 150, editable: false},
-  ]
-
-  const modalRows = 
-    selectedAnimalDetail && 
-    selectedAnimalDetail.map((x,i) => {
-      return {
-        id: i,
-        organization: `${x.organization}`, 
-        email: `${x.email}`, 
-        phone: `${x.contactPhone}`, 
-        animalId: `${x.animalId}`
-      }
-    })
-  
+    
+    const rows =
+      searchContent &&
+      searchContent.map((x, i) => {
+        return {
+          id: i,
+          animalName: `${x.name}`,
+          type: `${x.type}`,
+          animalBreed: `${x.breed} ${x.breed2 ? `${x.breed2}` : ""}`,
+          animalLocation: `${x.city} ${x.state}`,
+          photos: `${x.photo}`,
+        };
+      });
 
   const columns = [
-    { field: "animalName", headerName: "Animal Name", width: 150, editable: true},
+    {
+      field: "animalName",
+      headerName: "Animal Name",
+      width: 150,
+      editable: true,
+    },
     { field: "type", headerName: "Type", width: 150 },
     {
       field: "animalBreed",
@@ -141,7 +163,12 @@ export default function AnimalTableDataMUI({
       width: 100,
       renderCell: (params) => {
         return (
-          <Button variant="outlined" onClick={() => handleRowClick(params.row.id)}>Details</Button>
+          <Button
+            variant="outlined"
+            onClick={() => handleRowClick(params.row.id)}
+          >
+            Details
+          </Button>
         );
       },
     },
@@ -152,14 +179,18 @@ export default function AnimalTableDataMUI({
       width: 125,
       renderCell: (params) => {
         return (
-          <Button variant="outlined" color='error' startIcon={<DeleteIcon />} onClick={() => handleAnimalDelete(params.row.id)}>
+          <Button
+            variant="outlined"
+            color="error"
+            startIcon={<DeleteIcon />}
+            onClick={() => handleAnimalDelete(params.row.id)}
+          >
             Delete
           </Button>
         );
       },
     },
   ];
-
 
   return (
     <>
@@ -186,41 +217,46 @@ export default function AnimalTableDataMUI({
                   <h1>{selectedAnimalDetail[0]["name"]}</h1>
                   {!selectedAnimalDetail[0]["photo"] ? (
                     <img
-                    className="modal-img"
-                    src={pawvector}
-                    width="200"
-                    height="200"
-                    alt="not available2"
-                  />
+                      className="modal-img"
+                      src={pawvector}
+                      width="200"
+                      height="200"
+                      alt="not available2"
+                    />
                   ) : (
-                  <img
-                    src={selectedAnimalDetail[0]["photo"]}
-                    width="relative"
-                    height="100"
-                    alt="some real animals"
-                  />
+                    <img
+                      src={selectedAnimalDetail[0]["photo"]}
+                      width="relative"
+                      height="100"
+                      alt="some real animals"
+                    />
                   )}
-                  <DataGrid
-                    rows={modalRows}
-                    columns={modalCols}
-
-                  />
-                  <table>
+                  <DataGrid 
+                  rows={modalRows} 
+                  columns={modalCols}
+                  initialState={{
+                    pagination: { paginationModel: { pageSize: 1 } },
+                  }}
+                  pageSizeOptions={[1]}
+                   />
+                  {/* <table>
                     <thead>
-                    <th>Organization</th>
-                    <th>Contact Email</th>
-                    <th>Contact Phone</th>
-                    <th>Animal ID</th>
+                      <tr>
+                        <th>Organization</th>
+                        <th>Contact Email</th>
+                        <th>Contact Phone</th>
+                        <th>Animal ID</th>
+                      </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td>{selectedAnimalDetail[0]["organization"]}</td>
-                        <td>{selectedAnimalDetail[0]['email']}</td>
-                        <td>{selectedAnimalDetail[0]['phone']}</td>
-                        <td>{selectedAnimalDetail[0]['orgAnimalId']}</td>
+                        <td>{selectedAnimalDetail[0]["email"]}</td>
+                        <td>{selectedAnimalDetail[0]["phone"]}</td>
+                        <td>{selectedAnimalDetail[0]["orgAnimalId"]}</td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table> */}
                 </div>
               </Box>
             </>

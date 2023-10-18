@@ -76,7 +76,7 @@ export default function AnimalTableDataMUI({
     {
       field: "contactEmail",
       headerName: "Contact Email",
-      width: 400,
+      width: 350,
       editable: false,
     },
     {

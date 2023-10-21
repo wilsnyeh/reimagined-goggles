@@ -35,21 +35,6 @@ export default function AnimalTableDataMUI({
     setSearchContent(newList);
   };
 
-  const handleAnimalNameChange = (e) => {
-    e.preventDefault();
-    //declare index, as the searchcontent that matches our selection
-    const index = searchContent.findIndex(
-      (animal) => animal.name === selectedAnimalDetail[0]["name"]
-    );
-    //declare newsearchcontent with the rest of the data from search content
-    const newSearchContent = [...searchContent];
-    //designates specific searchcontent to be the newsearchcontent obj, and name, to be the state of newName
-    newSearchContent[index] = { ...newSearchContent[index], name: newName };
-    //setting the new state of searchcontent
-    setSearchContent(newSearchContent);
-    setIsModalOpen(false);
-  };
-
   const style = {
     position: "absolute",
     top: "50%",

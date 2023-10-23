@@ -221,24 +221,6 @@ export default function AnimalTableDataMUI({
                   }}
                   pageSizeOptions={[1]}
                    />
-                  {/* <table>
-                    <thead>
-                      <tr>
-                        <th>Organization</th>
-                        <th>Contact Email</th>
-                        <th>Contact Phone</th>
-                        <th>Animal ID</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>{selectedAnimalDetail[0]["organization"]}</td>
-                        <td>{selectedAnimalDetail[0]["email"]}</td>
-                        <td>{selectedAnimalDetail[0]["phone"]}</td>
-                        <td>{selectedAnimalDetail[0]["orgAnimalId"]}</td>
-                      </tr>
-                    </tbody>
-                  </table> */}
                 </div>
               </Box>
             </>

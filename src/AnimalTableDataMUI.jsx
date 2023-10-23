@@ -35,21 +35,6 @@ export default function AnimalTableDataMUI({
     setSearchContent(newList);
   };
 
-  const handleAnimalNameChange = (e) => {
-    e.preventDefault();
-    //declare index, as the searchcontent that matches our selection
-    const index = searchContent.findIndex(
-      (animal) => animal.name === selectedAnimalDetail[0]["name"]
-    );
-    //declare newsearchcontent with the rest of the data from search content
-    const newSearchContent = [...searchContent];
-    //designates specific searchcontent to be the newsearchcontent obj, and name, to be the state of newName
-    newSearchContent[index] = { ...newSearchContent[index], name: newName };
-    //setting the new state of searchcontent
-    setSearchContent(newSearchContent);
-    setIsModalOpen(false);
-  };
-
   const style = {
     position: "absolute",
     top: "50%",
@@ -236,24 +221,6 @@ export default function AnimalTableDataMUI({
                   }}
                   pageSizeOptions={[1]}
                    />
-                  {/* <table>
-                    <thead>
-                      <tr>
-                        <th>Organization</th>
-                        <th>Contact Email</th>
-                        <th>Contact Phone</th>
-                        <th>Animal ID</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>{selectedAnimalDetail[0]["organization"]}</td>
-                        <td>{selectedAnimalDetail[0]["email"]}</td>
-                        <td>{selectedAnimalDetail[0]["phone"]}</td>
-                        <td>{selectedAnimalDetail[0]["orgAnimalId"]}</td>
-                      </tr>
-                    </tbody>
-                  </table> */}
                 </div>
               </Box>
             </>

@@ -61,10 +61,8 @@ const AuthToken = ({ setLoggedIn, loggedIn }) => {
   // useAuth to hold onto token, and when the token is needed useAuth to pass this around
   return (
     <div className='login-container'>
-      <input className='login-input' type="text" placeholder="username" />
-      
-      <input className='login-input' type="text" placeholder="password" />
-      
+      {/* <input className='login-input' type="text" placeholder="username" />
+      <input className='login-input' type="text" placeholder="password" /> */}
       <button className='login-button'
         type="submit"
         onClick={() => {
@@ -72,7 +70,7 @@ const AuthToken = ({ setLoggedIn, loggedIn }) => {
           isLoggedIn()
         }}
       >
-        Login
+        Get Authed
       </button>
     </div>
   );

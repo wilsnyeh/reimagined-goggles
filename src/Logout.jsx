@@ -17,7 +17,7 @@ export function Logout({ token, setLoggedIn, loggedIn }) {
     <>
       {/* {!loggedIn && <Navigate to="/" />} */}
       {/* {loggedIn &&  */}
-        <button onClick={handleLogoutSubmit}>logout</button>
+        <button onClick={handleLogoutSubmit}>Return to Auth</button>
       {/* } */}
       
     </>

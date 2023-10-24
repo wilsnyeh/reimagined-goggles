@@ -133,7 +133,7 @@ export default function AnimalTableDataMUI({
           <img
             src={params.value}
             width="relative"
-            height="100"
+            height="150"
             alt="some real animals"
           />
         );
@@ -179,7 +179,7 @@ export default function AnimalTableDataMUI({
       <div style={{ height: 500, width: "100%" }}>
         <DataGrid
           rows={rows}
-          rowHeight={100}
+          rowHeight={150}
           slots={{ toolbar: GridToolbar }}
           slotProps={{
             toolbar: {
@@ -209,7 +209,7 @@ export default function AnimalTableDataMUI({
                     <img
                       src={selectedAnimalDetail[0]["photo"]}
                       width="relative"
-                      height="100"
+                      height="300"
                       alt="some real animals"
                     />
                   )}

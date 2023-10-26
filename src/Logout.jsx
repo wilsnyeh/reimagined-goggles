@@ -4,22 +4,14 @@ import { useNavigate } from "react-router-dom";
 export function Logout({ token, setLoggedIn, loggedIn }) {
   const navigate = useNavigate();
 
-
   const handleLogoutSubmit = async () => {
     localStorage.clear();
     setLoggedIn(false);
-    // if (!token) {
-      navigate("/");
-    // }
-
+    navigate("/");
   };
   return (
     <>
-      {/* {!loggedIn && <Navigate to="/" />} */}
-      {/* {loggedIn &&  */}
-        <button onClick={handleLogoutSubmit}>Return to Auth</button>
-      {/* } */}
-      
+      <button class="button-tr" onClick={handleLogoutSubmit}>Return to Auth</button>
     </>
   );
 }

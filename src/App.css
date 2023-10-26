@@ -136,9 +136,17 @@ th, td {
   position: absolute;
   top: 0;
   right: 0;
+  margin: 10px 20px;
   
 }
 
+.selector {
+  margin: 5px 2px;
+}
+
+.labeler {
+  font-size: 20px;
+}
 th, td {
   padding-left: 20px;
 }

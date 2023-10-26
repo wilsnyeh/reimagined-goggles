@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { TokenContext } from "./TokenContext";
 
+
 const animalTypes = [
   "",
   "Cat",
@@ -196,9 +197,10 @@ const AnimalTypes = ({
   return (
     <div>
       <form onSubmit={handleSearchSubmit}>
-        <label htmlFor="animaltypes">Choose an animal type!</label>
+        <label className="labeler" htmlFor="animaltypes">Choose an animal type!</label>
         <br></br>
         <select
+          className="selector"
           id="animaltypes"
           value={searchType}
           onChange={handleSearchChange}
@@ -210,7 +212,7 @@ const AnimalTypes = ({
         </select>
         {breedInput()}
 
-        <select value={searchLocation} onChange={handleLocationChange}>
+        <select className='selector' value={searchLocation} onChange={handleLocationChange}>
           <option></option>
           {statesAbbreviation.map((abb, i) => {
             return <option key={i}>{abb}</option>;

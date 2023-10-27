@@ -92,22 +92,33 @@ const AnimalTypes = ({
   }
 
   const fetchAnimalData = async () => {
-    let petFinderSearchUrl = `https://api.petfinder.com/v2/animals?page=${page}`;
-
-    petFinderSearchUrl += `&type=${searchType}`;
-
-    if (selectedBreedType && searchType === "Dog") {
-      petFinderSearchUrl += `&breed=${selectedBreedType}`;
-    }
-    if (selectedBreedType && searchType === "Cat") {
-      petFinderSearchUrl += `&breed=${selectedBreedType}`;
-    }
-    if (selectedBreedType && searchType === "Bird") {
-      petFinderSearchUrl += `&breed=${selectedBreedType}`;
+    let petFinderSearchUrl = `https://api.petfinder.com/v2/animals?page=${page}&type=${searchType}`;
+    const breedTypes = ["Dog", "Cat", "Bird", "Rabbit", "Horse", "Scales-Fins-Other", "Barnyard"]
+    if (selectedBreedType && breedTypes.includes(searchType)) {
+      petFinderSearchUrl += `&breed=${selectedBreedType}`
     }
     if (searchLocation.length > 0) {
-      petFinderSearchUrl += `&location=${searchLocation}`;
+      petFinderSearchUrl += `&location=${searchLocation}`
     }
+
+    // if (selectedBreedType && searchType === "Dog") {
+    //   petFinderSearchUrl += `&breed=${selectedBreedType}`;
+    // }
+    // if (selectedBreedType && searchType === "Cat") {
+    //   petFinderSearchUrl += `&breed=${selectedBreedType}`;
+    // }
+    // if (selectedBreedType && searchType === "Bird") {
+    //   petFinderSearchUrl += `&breed=${selectedBreedType}`;
+    // }
+    // if (selectedBreedType && searchType === "Rabbit") {
+    //   petFinderSearchUrl += `&breed=${selectedBreedType}`;
+    // }
+    // if (selectedBreedType && searchType === "Horse") {
+    //   petFinderSearchUrl += `&breed=${selectedBreedType}`;
+    // }
+    // if (searchLocation.length > 0) {
+    //   petFinderSearchUrl += `&location=${searchLocation}`;
+    // }
     const options = {
       method: "GET",
       headers: {
@@ -183,6 +194,46 @@ const AnimalTypes = ({
       );
     }
     if (searchType === "Bird") {
+      return (
+        <select onChange={handleSelectedBreedTypeChange}>
+          <option></option>
+          {breedList.map((bl, i) => {
+            return <option key={i}>{bl}</option>;
+          })}
+        </select>
+      );
+    }
+    if (searchType === "Rabbit") {
+      return (
+        <select onChange={handleSelectedBreedTypeChange}>
+          <option></option>
+          {breedList.map((bl, i) => {
+            return <option key={i}>{bl}</option>;
+          })}
+        </select>
+      );
+    }
+    if (searchType === "Horse") {
+      return (
+        <select onChange={handleSelectedBreedTypeChange}>
+          <option></option>
+          {breedList.map((bl, i) => {
+            return <option key={i}>{bl}</option>;
+          })}
+        </select>
+      );
+    }
+    if (searchType === "Scales-Fins-Other") {
+      return (
+        <select onChange={handleSelectedBreedTypeChange}>
+          <option></option>
+          {breedList.map((bl, i) => {
+            return <option key={i}>{bl}</option>;
+          })}
+        </select>
+      );
+    }
+    if (searchType === "Barnyard") {
       return (
         <select onChange={handleSelectedBreedTypeChange}>
           <option></option>

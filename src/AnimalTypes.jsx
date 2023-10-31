@@ -101,24 +101,6 @@ const AnimalTypes = ({
       petFinderSearchUrl += `&location=${searchLocation}`
     }
 
-    // if (selectedBreedType && searchType === "Dog") {
-    //   petFinderSearchUrl += `&breed=${selectedBreedType}`;
-    // }
-    // if (selectedBreedType && searchType === "Cat") {
-    //   petFinderSearchUrl += `&breed=${selectedBreedType}`;
-    // }
-    // if (selectedBreedType && searchType === "Bird") {
-    //   petFinderSearchUrl += `&breed=${selectedBreedType}`;
-    // }
-    // if (selectedBreedType && searchType === "Rabbit") {
-    //   petFinderSearchUrl += `&breed=${selectedBreedType}`;
-    // }
-    // if (selectedBreedType && searchType === "Horse") {
-    //   petFinderSearchUrl += `&breed=${selectedBreedType}`;
-    // }
-    // if (searchLocation.length > 0) {
-    //   petFinderSearchUrl += `&location=${searchLocation}`;
-    // }
     const options = {
       method: "GET",
       headers: {
@@ -127,7 +109,6 @@ const AnimalTypes = ({
       },
     };
     
-
     const res = await fetch(petFinderSearchUrl, options);
     const content = await res.json();
     let animals = [];

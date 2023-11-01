@@ -229,7 +229,7 @@ const AnimalTypes = ({
   return (
     <div>
       <form onSubmit={handleSearchSubmit}>
-        <label className="labeler" htmlFor="animaltypes">Choose an animal type!</label>
+        <label className="labeler" htmlFor="animaltypes">choose an animal type</label>
         <br></br>
         <select
           className="selector"

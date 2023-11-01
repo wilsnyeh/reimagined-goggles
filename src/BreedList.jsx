@@ -30,7 +30,7 @@ const BreedList = ({setBreedList, searchType}) => {
       };
       return (
         <div style={{paddingBottom:25}}>
-            <button
+            <button className='search-buttons'
             onClick={searchBreeds}
             >get breeds</button>
         </div>

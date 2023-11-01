@@ -10,7 +10,7 @@ export function Logout({ token, setLoggedIn, loggedIn }) {
   };
   return (
     <>
-      <button class="button-tr" onClick={handleLogoutSubmit}>Return to Auth</button>
+      <button className="logout-button" onClick={handleLogoutSubmit}>Return to Auth</button>
     </>
   );
 }

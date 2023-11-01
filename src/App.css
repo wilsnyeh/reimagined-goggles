@@ -110,15 +110,11 @@ th, td {
     top:0;
     right:0;
 }
-.button-tr {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 10px 20px;
-}
 
 .selector {
   margin: 5px 2px;
+  border-radius: 4px;
+  padding: 5px;
 }
 
 .labeler {
@@ -182,4 +178,37 @@ th, td {
   color: white;
   border-radius: 5px;
   background: rgb(243, 127, 160);
+
+}
+
+.logout-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px 20px;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background: rgb(246, 120, 141);
+}
+
+.search-buttons {
+  border: none;
+  border-radius: 5px;
+  margin: 2px;
+  padding: 8px 10px;
+  color: white;
+  background: rgb(240, 183, 126);
+}
+
+.arrow-buttons {
+  border: solid;
+  border-width:1px; 
+  border-color: rgb(156, 198, 249);
+  border-radius: 5px;
+  background: rgb(251, 252, 252);
+  margin: 2px;
+  padding: 5px 15px;
+
 }

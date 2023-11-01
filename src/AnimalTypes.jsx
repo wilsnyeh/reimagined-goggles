@@ -156,7 +156,7 @@ const AnimalTypes = ({
   const breedInput = () => {
     if (searchType === "Dog") {
       return (
-        <select onChange={handleSelectedBreedTypeChange}>
+        <select className="selector" onChange={handleSelectedBreedTypeChange}>
           <option></option>
           {breedList.map((bl, i) => {
             return <option key={i}>{bl}</option>;
@@ -166,7 +166,7 @@ const AnimalTypes = ({
     }
     if (searchType === "Cat") {
       return (
-        <select onChange={handleSelectedBreedTypeChange}>
+        <select className="selector" onChange={handleSelectedBreedTypeChange}>
           <option></option>
           {breedList.map((bl, i) => {
             return <option key={i}>{bl}</option>;
@@ -176,7 +176,7 @@ const AnimalTypes = ({
     }
     if (searchType === "Bird") {
       return (
-        <select onChange={handleSelectedBreedTypeChange}>
+        <select className="selector" onChange={handleSelectedBreedTypeChange}>
           <option></option>
           {breedList.map((bl, i) => {
             return <option key={i}>{bl}</option>;
@@ -186,7 +186,7 @@ const AnimalTypes = ({
     }
     if (searchType === "Rabbit") {
       return (
-        <select onChange={handleSelectedBreedTypeChange}>
+        <select className="selector" onChange={handleSelectedBreedTypeChange}>
           <option></option>
           {breedList.map((bl, i) => {
             return <option key={i}>{bl}</option>;
@@ -196,7 +196,7 @@ const AnimalTypes = ({
     }
     if (searchType === "Horse") {
       return (
-        <select onChange={handleSelectedBreedTypeChange}>
+        <select className="selector" onChange={handleSelectedBreedTypeChange}>
           <option></option>
           {breedList.map((bl, i) => {
             return <option key={i}>{bl}</option>;
@@ -206,7 +206,7 @@ const AnimalTypes = ({
     }
     if (searchType === "Scales-Fins-Other") {
       return (
-        <select onChange={handleSelectedBreedTypeChange}>
+        <select className="selector" onChange={handleSelectedBreedTypeChange}>
           <option></option>
           {breedList.map((bl, i) => {
             return <option key={i}>{bl}</option>;
@@ -216,7 +216,7 @@ const AnimalTypes = ({
     }
     if (searchType === "Barnyard") {
       return (
-        <select onChange={handleSelectedBreedTypeChange}>
+        <select className="selector" onChange={handleSelectedBreedTypeChange}>
           <option></option>
           {breedList.map((bl, i) => {
             return <option key={i}>{bl}</option>;
@@ -229,7 +229,7 @@ const AnimalTypes = ({
   return (
     <div>
       <form onSubmit={handleSearchSubmit}>
-        <label className="labeler" htmlFor="animaltypes">Choose an animal type!</label>
+        <label className="labeler" htmlFor="animaltypes">choose an animal type</label>
         <br></br>
         <select
           className="selector"
@@ -250,13 +250,14 @@ const AnimalTypes = ({
             return <option key={i}>{abb}</option>;
           })}
         </select>
-        <button type="submit">Search for an animal near you!</button>
+        <button className='search-buttons' type="submit">search for an animal near you!</button>
       </form>
       {submitted && (
 
       <>
       <p>Page {page} of {totalPages}</p>
       <button
+        className='arrow-buttons'
         onClick={() => {
           setPage(page > 1 ? page - 1 : 1);
         }}
@@ -264,6 +265,7 @@ const AnimalTypes = ({
         &lt;&lt;
       </button>{" "}
       <button
+        className='arrow-buttons'
         onClick={() => {
           setPage(page < totalPages ? page + 1 : totalPages);
         }}

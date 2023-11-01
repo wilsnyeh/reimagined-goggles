@@ -21,7 +21,6 @@ const AnimalTypeFetch = ({ setAnimalTypes}) => {
             typesArr.push(content.types[i]['name'])
         }
         setAnimalTypes(typesArr)
-        console.log('what is content here? ootl',typesArr)
     }
     return (
         <button type='submit' onClick={() => {

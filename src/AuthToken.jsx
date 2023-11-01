@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./App.css"; 
+import JRT from "./assets/Curious_JRT.mp4";
+import "./App.css";
 import { TokenContext } from "./TokenContext";
 
 const AuthToken = ({ setLoggedIn, loggedIn }) => {
-    
-  const {token, setToken} = useContext(TokenContext)
+  const { token, setToken } = useContext(TokenContext);
   const navigate = useNavigate();
 
   async function userAuth() {
@@ -18,10 +18,8 @@ const AuthToken = ({ setLoggedIn, loggedIn }) => {
         },
         body: JSON.stringify({
           grant_type: "client_credentials",
-          client_id: 
-          process.env.REACT_APP_CLIENT_ID,
-          client_secret: 
-          process.env.REACT_APP_CLIENT_SECRET,
+          client_id: process.env.REACT_APP_CLIENT_ID,
+          client_secret: process.env.REACT_APP_CLIENT_SECRET,
         }),
       };
       const res = await fetch(petFinderUrl, options);
@@ -29,50 +27,54 @@ const AuthToken = ({ setLoggedIn, loggedIn }) => {
       let token = json.access_token;
       setToken(token);
       return `Bearer ${token}`;
-      
     } catch (error) {
       console.error("error on token", error);
-      
     }
   }
 
   // this checks if token is true, then stores token into local storage and redirects
   useEffect(() => {
     if (loggedIn) {
-      localStorage.setItem('token', token);
-      localStorage.setItem('LoggedIn', loggedIn)
-      navigate('/petfinder')
+      localStorage.setItem("token", token);
+      localStorage.setItem("LoggedIn", loggedIn);
+      navigate("/petfinder");
     } else {
-      navigate('/')
+      navigate("/");
     }
   }, [token]);
   useEffect(() => {
-    const localToken = localStorage.getItem('token');
-    localStorage.getItem('LoggedIn')
+    const localToken = localStorage.getItem("token");
+    localStorage.getItem("LoggedIn");
     if (localToken) {
       setToken(localToken);
     }
   }, []);
-  
+
   const isLoggedIn = () => {
     setLoggedIn(true);
-  }
+  };
 
   // useAuth to hold onto token, and when the token is needed useAuth to pass this around
   return (
-    <div className='login-container'>
-      {/* <input className='login-input' type="text" placeholder="username" />
-      <input className='login-input' type="text" placeholder="password" /> */}
-      <button className='login-button'
-        type="submit"
-        onClick={() => {
-          userAuth();
-          isLoggedIn()
-        }}
-      >
-        Get Authed
-      </button>
-    </div>
+    <>
+      <div className="video-background">
+        <video autoPlay loop muted className='background-video'>
+          <source src={JRT} type='video/mp4' />
+        </video>
+        <div className="login-container">
+          <button
+            className="login-button"
+            type="submit"
+            onClick={() => {
+              userAuth();
+              isLoggedIn();
+            }}
+          >
+            Get Authed
+          </button>
+        </div>
+      </div>
+    </>
   );
 };
 

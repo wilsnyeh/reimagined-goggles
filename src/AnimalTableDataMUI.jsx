@@ -47,7 +47,6 @@ export default function AnimalTableDataMUI({
     p: 4,
   };
 
-  
   const modalCols = [
     {
       field: "organization",

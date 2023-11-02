@@ -52,6 +52,7 @@ const AnimalTypes = ({
   const handleSelectedBreedTypeChange = (e) => {
     setSelectedBreedType(e.target.value);
   };
+
   // this is to rerender when pages are increased/decreased
   useEffect(() => {
     //this was causing error for its initial render
@@ -253,7 +254,6 @@ const AnimalTypes = ({
         <button className='search-buttons' type="submit">search for an animal near you!</button>
       </form>
       {submitted && (
-
       <>
       <p>Page {page} of {totalPages}</p>
       <button

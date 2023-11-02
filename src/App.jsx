@@ -2,12 +2,13 @@ import React, { useState, useAuth, useContext } from "react";
 import "./App.css";
 import AuthToken from "./AuthToken";
 import BreedList from "./BreedList";
-import AnimalTypes from "./AnimalTypes";
+import AnimalTypes, { fetchAnimalData } from "./AnimalTypes";
 import { Route, Routes } from "react-router-dom";
 import { Logout } from "./Logout";
 import { ReturnToLogin } from "./ReturnToLogin";
 import { TokenContext } from "./TokenContext";
 import AnimalTableDataMUI from "./AnimalTableDataMUI";
+import Pages from "./Pages";
 
 function App() {
   const { token, setToken } = useContext(TokenContext);
@@ -63,6 +64,17 @@ function App() {
                       setLoggedIn={setLoggedIn}
                     />
                     <BreedList
+                      setBreedList={setBreedList}
+                      searchType={searchType}
+                    />
+                    <Pages
+                      page={page}
+                      setPage={setPage}
+                      totalPages={totalPages}
+                      submitted={submitted}
+                      fetchAnimalData={fetchAnimalData}
+                      selectedBreedType={selectedBreedType}
+                      setSelectedBreedType={setSelectedBreedType}
                       setBreedList={setBreedList}
                       searchType={searchType}
                     />

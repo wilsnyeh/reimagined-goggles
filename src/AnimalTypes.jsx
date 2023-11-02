@@ -26,16 +26,16 @@ const AnimalTypes = ({
   setSearchLocation,
   breedList,
   setBreedList,
-  searchContent,
+  // searchContent,
   setSearchContent,
   page,
   setPage,
-  totalPages,
+  // totalPages,
   setTotalPages,
   submitted,
   setSubmitted, 
-  animalRows,
-  setAnimalRows,
+  // animalRows,
+  // setAnimalRows,
 
 }) => 
 
@@ -52,6 +52,7 @@ const AnimalTypes = ({
   const handleSelectedBreedTypeChange = (e) => {
     setSelectedBreedType(e.target.value);
   };
+
   // this is to rerender when pages are increased/decreased
   useEffect(() => {
     //this was causing error for its initial render
@@ -79,7 +80,6 @@ const AnimalTypes = ({
     setPage(1);
     setSelectedBreedType("")
     setBreedList([])
-    // fetchAnimalData()
   },[searchType])
 
   //prevent default was also giving issues - reason for needing to move it searchsubmit into its own func
@@ -93,8 +93,7 @@ const AnimalTypes = ({
 
   const fetchAnimalData = async () => {
     let petFinderSearchUrl = `https://api.petfinder.com/v2/animals?page=${page}&type=${searchType}`;
-    const breedTypes = ["Dog", "Cat", "Bird", "Rabbit", "Horse", "Scales-Fins-Other", "Barnyard"]
-    if (selectedBreedType && breedTypes.includes(searchType)) {
+    if (selectedBreedType && animalTypes.includes(searchType)) {
       petFinderSearchUrl += `&breed=${selectedBreedType}`
     }
     if (searchLocation.length > 0) {
@@ -154,7 +153,8 @@ const AnimalTypes = ({
   };
  
   const breedInput = () => {
-    if (searchType === "Dog") {
+
+    if (animalTypes.includes(searchType)) {
       return (
         <select className="selector" onChange={handleSelectedBreedTypeChange}>
           <option></option>
@@ -162,67 +162,7 @@ const AnimalTypes = ({
             return <option key={i}>{bl}</option>;
           })}
         </select>
-      );
-    }
-    if (searchType === "Cat") {
-      return (
-        <select className="selector" onChange={handleSelectedBreedTypeChange}>
-          <option></option>
-          {breedList.map((bl, i) => {
-            return <option key={i}>{bl}</option>;
-          })}
-        </select>
-      );
-    }
-    if (searchType === "Bird") {
-      return (
-        <select className="selector" onChange={handleSelectedBreedTypeChange}>
-          <option></option>
-          {breedList.map((bl, i) => {
-            return <option key={i}>{bl}</option>;
-          })}
-        </select>
-      );
-    }
-    if (searchType === "Rabbit") {
-      return (
-        <select className="selector" onChange={handleSelectedBreedTypeChange}>
-          <option></option>
-          {breedList.map((bl, i) => {
-            return <option key={i}>{bl}</option>;
-          })}
-        </select>
-      );
-    }
-    if (searchType === "Horse") {
-      return (
-        <select className="selector" onChange={handleSelectedBreedTypeChange}>
-          <option></option>
-          {breedList.map((bl, i) => {
-            return <option key={i}>{bl}</option>;
-          })}
-        </select>
-      );
-    }
-    if (searchType === "Scales-Fins-Other") {
-      return (
-        <select className="selector" onChange={handleSelectedBreedTypeChange}>
-          <option></option>
-          {breedList.map((bl, i) => {
-            return <option key={i}>{bl}</option>;
-          })}
-        </select>
-      );
-    }
-    if (searchType === "Barnyard") {
-      return (
-        <select className="selector" onChange={handleSelectedBreedTypeChange}>
-          <option></option>
-          {breedList.map((bl, i) => {
-            return <option key={i}>{bl}</option>;
-          })}
-        </select>
-      );
+      )
     }
   };
   
@@ -252,28 +192,6 @@ const AnimalTypes = ({
         </select>
         <button className='search-buttons' type="submit">search for an animal near you!</button>
       </form>
-      {submitted && (
-
-      <>
-      <p>Page {page} of {totalPages}</p>
-      <button
-        className='arrow-buttons'
-        onClick={() => {
-          setPage(page > 1 ? page - 1 : 1);
-        }}
-      >
-        &lt;&lt;
-      </button>{" "}
-      <button
-        className='arrow-buttons'
-        onClick={() => {
-          setPage(page < totalPages ? page + 1 : totalPages);
-        }}
-      >
-        &gt;&gt;
-      </button>
-      </>
-      )}
     </div>
   );
 };

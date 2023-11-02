@@ -1,4 +1,4 @@
-import React, { useState, useAuth, useContext } from "react";
+import React, { useState, useContext } from "react";
 import "./App.css";
 import AuthToken from "./AuthToken";
 import BreedList from "./BreedList";
@@ -8,9 +8,10 @@ import { Logout } from "./Logout";
 import { ReturnToLogin } from "./ReturnToLogin";
 import { TokenContext } from "./TokenContext";
 import AnimalTableDataMUI from "./AnimalTableDataMUI";
+import Pages from "./Pages";
 
-function App() {
-  const { token, setToken } = useContext(TokenContext);
+function App({fetchAnimalData}) {
+  const { token } = useContext(TokenContext);
   const [searchType, setSearchType] = useState("");
   const [breedList, setBreedList] = useState([]);
   const [searchLocation, setSearchLocation] = useState("");
@@ -51,13 +52,13 @@ function App() {
                       setSearchLocation={setSearchLocation}
                       breedList={breedList}
                       setBreedList={setBreedList}
-                      searchContent={searchContent}
+                      // searchContent={searchContent}
                       setSearchContent={setSearchContent}
                       page={page}
                       setPage={setPage}
                       submitted={submitted}
                       setSubmitted={setSubmitted}
-                      totalPages={totalPages}
+                      // totalPages={totalPages}
                       setTotalPages={setTotalPages}
                       loggedIn={loggedIn}
                       setLoggedIn={setLoggedIn}
@@ -65,6 +66,12 @@ function App() {
                     <BreedList
                       setBreedList={setBreedList}
                       searchType={searchType}
+                    />
+                    <Pages
+                      page={page}
+                      setPage={setPage}
+                      totalPages={totalPages}
+                      submitted={submitted}
                     />
                     <AnimalTableDataMUI
                       searchContent={searchContent}

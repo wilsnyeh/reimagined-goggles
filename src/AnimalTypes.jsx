@@ -1,4 +1,4 @@
-import { useContext, useEffect, createContext } from "react";
+import { useContext, useEffect } from "react";
 import { TokenContext } from "./TokenContext";
 
 
@@ -26,16 +26,16 @@ const AnimalTypes = ({
   setSearchLocation,
   breedList,
   setBreedList,
-  searchContent,
+  // searchContent,
   setSearchContent,
   page,
   setPage,
-  totalPages,
+  // totalPages,
   setTotalPages,
   submitted,
   setSubmitted, 
-  animalRows,
-  setAnimalRows,
+  // animalRows,
+  // setAnimalRows,
 
 }) => 
 
@@ -80,7 +80,6 @@ const AnimalTypes = ({
     setPage(1);
     setSelectedBreedType("")
     setBreedList([])
-    // fetchAnimalData()
   },[searchType])
 
   //prevent default was also giving issues - reason for needing to move it searchsubmit into its own func
@@ -192,27 +191,6 @@ const AnimalTypes = ({
         </select>
         <button className='search-buttons' type="submit">search for an animal near you!</button>
       </form>
-      {/* {submitted && (
-      <>
-      <p>Page {page} of {totalPages}</p>
-      <button
-        className='arrow-buttons'
-        onClick={() => {
-          setPage(page > 1 ? page - 1 : 1);
-        }}
-      >
-        &lt;&lt;
-      </button>{" "}
-      <button
-        className='arrow-buttons'
-        onClick={() => {
-          setPage(page < totalPages ? page + 1 : totalPages);
-        }}
-      >
-        &gt;&gt;
-      </button>
-      </>
-      )} */}
     </div>
   );
 };

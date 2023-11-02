@@ -1,4 +1,4 @@
-import React, { useState, useAuth, useContext } from "react";
+import React, { useState, useContext } from "react";
 import "./App.css";
 import AuthToken from "./AuthToken";
 import BreedList from "./BreedList";
@@ -11,7 +11,7 @@ import AnimalTableDataMUI from "./AnimalTableDataMUI";
 import Pages from "./Pages";
 
 function App({fetchAnimalData}) {
-  const { token, setToken } = useContext(TokenContext);
+  const { token } = useContext(TokenContext);
   const [searchType, setSearchType] = useState("");
   const [breedList, setBreedList] = useState([]);
   const [searchLocation, setSearchLocation] = useState("");
@@ -24,7 +24,6 @@ function App({fetchAnimalData}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAnimalDetail, setSelectedAnimalDetail] = useState(null);
   const [newName, setNewName] = useState('')
-  const [fetchFromAnimalTypes, setFetchFromAnimalTypes] = useState(null)
 
 
   return (
@@ -53,13 +52,13 @@ function App({fetchAnimalData}) {
                       setSearchLocation={setSearchLocation}
                       breedList={breedList}
                       setBreedList={setBreedList}
-                      searchContent={searchContent}
+                      // searchContent={searchContent}
                       setSearchContent={setSearchContent}
                       page={page}
                       setPage={setPage}
                       submitted={submitted}
                       setSubmitted={setSubmitted}
-                      totalPages={totalPages}
+                      // totalPages={totalPages}
                       setTotalPages={setTotalPages}
                       loggedIn={loggedIn}
                       setLoggedIn={setLoggedIn}
@@ -73,11 +72,6 @@ function App({fetchAnimalData}) {
                       setPage={setPage}
                       totalPages={totalPages}
                       submitted={submitted}
-                      fetchAnimalData={fetchAnimalData}
-                      selectedBreedType={selectedBreedType}
-                      setSelectedBreedType={setSelectedBreedType}
-                      setBreedList={setBreedList}
-                      searchType={searchType}
                     />
                     <AnimalTableDataMUI
                       searchContent={searchContent}

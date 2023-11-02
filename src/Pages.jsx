@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-
+import React from "react";
 
 
 const Pages = ({
@@ -7,41 +6,8 @@ const Pages = ({
     setPage, 
     totalPages, 
     submitted,
-    selectedBreedType,
-    setSelectedBreedType,
-    fetchAnimalData,
-    setBreedList,
-    searchType
 }) => 
 {
-    useEffect(() => {
-        //this was causing error for its initial render
-        //needed something to delay the first render
-        if (!submitted) {
-          return;
-        }
-        fetchAnimalData()
-      },[page])
-
-      useEffect(() => {
-        if (!submitted) {
-          return;
-        }
-        setPage(1);
-        // setSelectedBreedType("")
-        fetchAnimalData()
-      },[selectedBreedType])
-
-      useEffect(() => {
-        if (!submitted) {
-          return;
-        }
-        setPage(1);
-        setSelectedBreedType("")
-        setBreedList([])
-        // fetchAnimalData()
-      },[searchType])
-
     return (
         <div>
         {submitted && (

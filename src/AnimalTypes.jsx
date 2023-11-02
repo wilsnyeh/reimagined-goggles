@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, createContext } from "react";
 import { TokenContext } from "./TokenContext";
 
 
@@ -94,8 +94,7 @@ const AnimalTypes = ({
 
   const fetchAnimalData = async () => {
     let petFinderSearchUrl = `https://api.petfinder.com/v2/animals?page=${page}&type=${searchType}`;
-    const breedTypes = ["Dog", "Cat", "Bird", "Rabbit", "Horse", "Scales-Fins-Other", "Barnyard"]
-    if (selectedBreedType && breedTypes.includes(searchType)) {
+    if (selectedBreedType && animalTypes.includes(searchType)) {
       petFinderSearchUrl += `&breed=${selectedBreedType}`
     }
     if (searchLocation.length > 0) {
@@ -155,7 +154,7 @@ const AnimalTypes = ({
   };
  
   const breedInput = () => {
-    if (searchType === "Dog") {
+    if (animalTypes.includes(searchType)) {
       return (
         <select className="selector" onChange={handleSelectedBreedTypeChange}>
           <option></option>
@@ -163,67 +162,7 @@ const AnimalTypes = ({
             return <option key={i}>{bl}</option>;
           })}
         </select>
-      );
-    }
-    if (searchType === "Cat") {
-      return (
-        <select className="selector" onChange={handleSelectedBreedTypeChange}>
-          <option></option>
-          {breedList.map((bl, i) => {
-            return <option key={i}>{bl}</option>;
-          })}
-        </select>
-      );
-    }
-    if (searchType === "Bird") {
-      return (
-        <select className="selector" onChange={handleSelectedBreedTypeChange}>
-          <option></option>
-          {breedList.map((bl, i) => {
-            return <option key={i}>{bl}</option>;
-          })}
-        </select>
-      );
-    }
-    if (searchType === "Rabbit") {
-      return (
-        <select className="selector" onChange={handleSelectedBreedTypeChange}>
-          <option></option>
-          {breedList.map((bl, i) => {
-            return <option key={i}>{bl}</option>;
-          })}
-        </select>
-      );
-    }
-    if (searchType === "Horse") {
-      return (
-        <select className="selector" onChange={handleSelectedBreedTypeChange}>
-          <option></option>
-          {breedList.map((bl, i) => {
-            return <option key={i}>{bl}</option>;
-          })}
-        </select>
-      );
-    }
-    if (searchType === "Scales-Fins-Other") {
-      return (
-        <select className="selector" onChange={handleSelectedBreedTypeChange}>
-          <option></option>
-          {breedList.map((bl, i) => {
-            return <option key={i}>{bl}</option>;
-          })}
-        </select>
-      );
-    }
-    if (searchType === "Barnyard") {
-      return (
-        <select className="selector" onChange={handleSelectedBreedTypeChange}>
-          <option></option>
-          {breedList.map((bl, i) => {
-            return <option key={i}>{bl}</option>;
-          })}
-        </select>
-      );
+      )
     }
   };
   
@@ -253,7 +192,7 @@ const AnimalTypes = ({
         </select>
         <button className='search-buttons' type="submit">search for an animal near you!</button>
       </form>
-      {submitted && (
+      {/* {submitted && (
       <>
       <p>Page {page} of {totalPages}</p>
       <button
@@ -273,7 +212,7 @@ const AnimalTypes = ({
         &gt;&gt;
       </button>
       </>
-      )}
+      )} */}
     </div>
   );
 };

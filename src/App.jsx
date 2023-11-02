@@ -2,7 +2,7 @@ import React, { useState, useAuth, useContext } from "react";
 import "./App.css";
 import AuthToken from "./AuthToken";
 import BreedList from "./BreedList";
-import AnimalTypes, { fetchAnimalData } from "./AnimalTypes";
+import AnimalTypes from "./AnimalTypes";
 import { Route, Routes } from "react-router-dom";
 import { Logout } from "./Logout";
 import { ReturnToLogin } from "./ReturnToLogin";
@@ -10,7 +10,7 @@ import { TokenContext } from "./TokenContext";
 import AnimalTableDataMUI from "./AnimalTableDataMUI";
 import Pages from "./Pages";
 
-function App() {
+function App({fetchAnimalData}) {
   const { token, setToken } = useContext(TokenContext);
   const [searchType, setSearchType] = useState("");
   const [breedList, setBreedList] = useState([]);
@@ -24,6 +24,7 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAnimalDetail, setSelectedAnimalDetail] = useState(null);
   const [newName, setNewName] = useState('')
+  const [fetchFromAnimalTypes, setFetchFromAnimalTypes] = useState(null)
 
 
   return (

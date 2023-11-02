@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
 
+
+
 const Pages = ({
     page, 
     setPage, 
     totalPages, 
-    submitted,  
-    fetchAnimalData,
+    submitted,
     selectedBreedType,
     setSelectedBreedType,
+    fetchAnimalData,
     setBreedList,
     searchType
 }) => 
@@ -67,4 +69,4 @@ const Pages = ({
     )
 }
 
-export default Pages;s
+export default Pages;

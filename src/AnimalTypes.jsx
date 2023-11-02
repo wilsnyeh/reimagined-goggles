@@ -153,6 +153,7 @@ const AnimalTypes = ({
   };
  
   const breedInput = () => {
+
     if (animalTypes.includes(searchType)) {
       return (
         <select className="selector" onChange={handleSelectedBreedTypeChange}>

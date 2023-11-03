@@ -58,8 +58,8 @@ const AuthToken = ({ setLoggedIn, loggedIn }) => {
   return (
     <>
       <div className="video-background">
-        <video autoPlay loop muted className='background-video'>
-          <source src={JRT} type='video/mp4' />
+        <video autoPlay loop muted className="background-video">
+          <source src={JRT} type="video/mp4" />
         </video>
         <div className="login-container">
           <button
@@ -70,7 +70,7 @@ const AuthToken = ({ setLoggedIn, loggedIn }) => {
               isLoggedIn();
             }}
           >
-            Get Authed
+            Welcome!
           </button>
         </div>
       </div>

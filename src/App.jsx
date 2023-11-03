@@ -10,7 +10,8 @@ import { TokenContext } from "./TokenContext";
 import AnimalTableDataMUI from "./AnimalTableDataMUI";
 import Pages from "./Pages";
 
-function App({fetchAnimalData}) {
+
+function App({ fetchAnimalData }) {
   const { token } = useContext(TokenContext);
   const [searchType, setSearchType] = useState("");
   const [breedList, setBreedList] = useState([]);
@@ -23,8 +24,7 @@ function App({fetchAnimalData}) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAnimalDetail, setSelectedAnimalDetail] = useState(null);
-  const [newName, setNewName] = useState('')
-
+  const [newName, setNewName] = useState("");
 
   return (
     <>
@@ -52,13 +52,11 @@ function App({fetchAnimalData}) {
                       setSearchLocation={setSearchLocation}
                       breedList={breedList}
                       setBreedList={setBreedList}
-                      // searchContent={searchContent}
                       setSearchContent={setSearchContent}
                       page={page}
                       setPage={setPage}
                       submitted={submitted}
                       setSubmitted={setSubmitted}
-                      // totalPages={totalPages}
                       setTotalPages={setTotalPages}
                       loggedIn={loggedIn}
                       setLoggedIn={setLoggedIn}
@@ -80,7 +78,7 @@ function App({fetchAnimalData}) {
                       isModalOpen={isModalOpen}
                       setSelectedAnimalDetail={setSelectedAnimalDetail}
                       selectedAnimalDetail={selectedAnimalDetail}
-                      newName={newName} 
+                      newName={newName}
                       setNewName={setNewName}
                     />
                   </>

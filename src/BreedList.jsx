@@ -29,8 +29,8 @@ const BreedList = ({setBreedList, searchType}) => {
       }
       };
       return (
-        <div style={{paddingBottom:25}}>
-            <button className='search-buttons'
+        <div className='breeds-container'>
+            <button className='breeds-search-btn'
             onClick={searchBreeds}
             >get breeds</button>
         </div>

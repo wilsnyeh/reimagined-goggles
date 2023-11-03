@@ -25,13 +25,14 @@ const AnimalTypes = ({
   setSearchLocation,
   breedList,
   setBreedList,
-
   setSearchContent,
   page,
   setPage,
   setTotalPages,
   submitted,
   setSubmitted,
+  setIsLoading,
+  setNothing,
 }) => {
   const { token } = useContext(TokenContext);
 
@@ -88,6 +89,7 @@ const AnimalTypes = ({
   };
 
   const fetchAnimalData = async () => {
+    setIsLoading(true);
     let petFinderSearchUrl = `https://api.petfinder.com/v2/animals?page=${page}&type=${searchType}`;
     if (selectedBreedType && animalTypes.includes(searchType)) {
 
@@ -148,6 +150,8 @@ const AnimalTypes = ({
       animals.push(animal);
     }
     setSearchContent(animals);
+    setNothing(false);
+    setIsLoading(false);
   };
 
   const breedInput = () => {
@@ -166,7 +170,7 @@ const AnimalTypes = ({
   return (
     <div>
       <label className="labeler" htmlFor="animaltypes">
-        {selectedBreedType? "find your furbaby!" : searchType ? "get breeds!" : "choose an animal type"}
+        {selectedBreedType? "find your furbaby!" : searchType ? "get breeds!" : "give me all the animals! or pick one!"}
       </label>
       <form
         id="animal-form"

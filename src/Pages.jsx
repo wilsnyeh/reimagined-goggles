@@ -6,11 +6,12 @@ const Pages = ({
     setPage, 
     totalPages, 
     submitted,
+    isLoading,
 }) => 
 {
     return (
         <div>
-        {submitted && (
+        {submitted && !isLoading && (
               <>
               <p style={{fontSize: "16px"}} >Page {page} of {totalPages}</p>
                 <button

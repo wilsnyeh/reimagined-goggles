@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import ModalDialog from "@mui/joy/ModalDialog";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
+import ReactLoading from "react-loading";
 
 export default function AnimalTableDataMUI({
   searchContent,
@@ -17,6 +18,8 @@ export default function AnimalTableDataMUI({
   isModalOpen,
   newName,
   setNewName,
+  isLoading,
+  nothing,
 }) {
   const handleRowClick = (detail) => {
     const animalDeets = searchContent.filter(
@@ -175,20 +178,28 @@ export default function AnimalTableDataMUI({
 
   return (
     <>
-      <div style={{ height: 500, width: "100%" }}>
-        <DataGrid
-          rows={rows}
-          rowHeight={150}
-          slots={{ toolbar: GridToolbar }}
-          slotProps={{
-            toolbar: {
-              showQuickFilter: true,
-              quickFilterProps: { debounceMs: 500 },
-            },
-          }}
-          columns={columns}
-        />
-      </div>
+      {nothing ? (
+        isLoading ? (
+          <div className="loading-mod">
+            <ReactLoading type="spinningBubbles" color="#D36605" />
+          </div>
+        ) : null
+      ) : (
+        <div style={{ height: 500, width: "100%" }}>
+          <DataGrid
+            rows={rows}
+            rowHeight={150}
+            slots={{ toolbar: GridToolbar }}
+            slotProps={{
+              toolbar: {
+                showQuickFilter: true,
+                quickFilterProps: { debounceMs: 500 },
+              },
+            }}
+            columns={columns}
+          />
+        </div>
+      )}
       <Modal open={isModalOpen} onClose={handleCloseModal}>
         <ModalDialog variant="soft" sx={{ maxWidth: 500, maxHeight: 500 }}>
           {selectedAnimalDetail && (

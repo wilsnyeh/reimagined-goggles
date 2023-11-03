@@ -27,6 +27,8 @@ function App({ fetchAnimalData }) {
   const [selectedAnimalDetail, setSelectedAnimalDetail] = useState(null);
   const [newName, setNewName] = useState("");
   const [isLoading, setIsLoading] = useState(false)
+  const [isLoved, setIsLoved] = useState(false)
+  const [nothing, setNothing] = useState(true)
 
   return (
     <>
@@ -64,6 +66,7 @@ function App({ fetchAnimalData }) {
                       setLoggedIn={setLoggedIn}
                       isLoading={isLoading}
                       setIsLoading={setIsLoading}
+                      setNothing={setNothing}
                     />
                     <BreedList
                       setBreedList={setBreedList}
@@ -87,6 +90,7 @@ function App({ fetchAnimalData }) {
                       newName={newName}
                       setNewName={setNewName}
                       isLoading={isLoading}
+                      nothing={nothing}
                     />
                   </>
                 ) : (

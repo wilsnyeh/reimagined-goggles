@@ -19,6 +19,7 @@ export default function AnimalTableDataMUI({
   newName,
   setNewName,
   isLoading,
+  nothing,
 }) {
   const handleRowClick = (detail) => {
     const animalDeets = searchContent.filter(
@@ -177,10 +178,12 @@ export default function AnimalTableDataMUI({
 
   return (
     <>
-      {isLoading ? (
-        <div className='loading-mod'>
-          <ReactLoading type="spinningBubbles" color="#D36605" />
-        </div>
+      {nothing ? (
+        isLoading ? (
+          <div className="loading-mod">
+            <ReactLoading type="spinningBubbles" color="#D36605" />
+          </div>
+        ) : null
       ) : (
         <div style={{ height: 500, width: "100%" }}>
           <DataGrid

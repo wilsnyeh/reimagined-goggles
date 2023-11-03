@@ -12,7 +12,7 @@ const Pages = ({
         <div>
         {submitted && (
               <>
-              <p>Page {page} of {totalPages}</p>
+              <p style={{fontSize: "16px"}} >Page {page} of {totalPages}</p>
                 <button
                   className="arrow-buttons"
                   onClick={() => {

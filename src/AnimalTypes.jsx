@@ -25,6 +25,7 @@ const AnimalTypes = ({
   setSearchLocation,
   breedList,
   setBreedList,
+
   setSearchContent,
   page,
   setPage,
@@ -33,6 +34,7 @@ const AnimalTypes = ({
   setSubmitted,
 }) => {
   const { token } = useContext(TokenContext);
+
   const handleSearchChange = (e) => {
     setSearchType(e.target.value);
   };
@@ -70,9 +72,11 @@ const AnimalTypes = ({
       return;
     }
     setPage(1);
+
     setSelectedBreedType("");
     setBreedList([]);
   }, [searchType]);
+
 
   //prevent default was also giving issues - reason for needing to move it searchsubmit into its own func
   // but still allowing to call the fetch in useeffect
@@ -86,7 +90,9 @@ const AnimalTypes = ({
   const fetchAnimalData = async () => {
     let petFinderSearchUrl = `https://api.petfinder.com/v2/animals?page=${page}&type=${searchType}`;
     if (selectedBreedType && animalTypes.includes(searchType)) {
+
       petFinderSearchUrl += `&breed=${selectedBreedType}`;
+
     }
     if (searchLocation.length > 0) {
       petFinderSearchUrl += `&location=${searchLocation}`;
@@ -153,7 +159,7 @@ const AnimalTypes = ({
             return <option key={i}>{bl}</option>;
           })}
         </select>
-      );
+      )
     }
   };
 

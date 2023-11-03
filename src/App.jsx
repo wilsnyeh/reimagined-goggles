@@ -10,6 +10,7 @@ import { TokenContext } from "./TokenContext";
 import AnimalTableDataMUI from "./AnimalTableDataMUI";
 import Pages from "./Pages";
 
+
 function App({ fetchAnimalData }) {
   const { token } = useContext(TokenContext);
   const [searchType, setSearchType] = useState("");

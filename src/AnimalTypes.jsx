@@ -1,7 +1,6 @@
 import { useContext, useEffect } from "react";
 import { TokenContext } from "./TokenContext";
 
-
 const animalTypes = [
   "",
   "Cat",
@@ -26,21 +25,14 @@ const AnimalTypes = ({
   setSearchLocation,
   breedList,
   setBreedList,
-  // searchContent,
   setSearchContent,
   page,
   setPage,
-  // totalPages,
   setTotalPages,
   submitted,
-  setSubmitted, 
-  // animalRows,
-  // setAnimalRows,
-
-}) => 
-
-{
-  const {token} = useContext(TokenContext)
+  setSubmitted,
+}) => {
+  const { token } = useContext(TokenContext);
   const handleSearchChange = (e) => {
     setSearchType(e.target.value);
   };
@@ -60,8 +52,8 @@ const AnimalTypes = ({
     if (!submitted) {
       return;
     }
-  fetchAnimalData()
-  },[page])
+    fetchAnimalData();
+  }, [page]);
 
   // this is to reset page when breedtype is changed
   useEffect(() => {
@@ -70,34 +62,34 @@ const AnimalTypes = ({
     }
     setPage(1);
     // setSelectedBreedType("")
-    fetchAnimalData()
-  },[selectedBreedType])
+    fetchAnimalData();
+  }, [selectedBreedType]);
   // this resets the page, breedtype, and breedlist, when searchtype is changed
   useEffect(() => {
     if (!submitted) {
       return;
     }
     setPage(1);
-    setSelectedBreedType("")
-    setBreedList([])
-  },[searchType])
+    setSelectedBreedType("");
+    setBreedList([]);
+  }, [searchType]);
 
   //prevent default was also giving issues - reason for needing to move it searchsubmit into its own func
   // but still allowing to call the fetch in useeffect
   // even after moving the original searchsubmit into useeffect, and prevent default, was getting 'length' issue, along with unwanted page
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true)
+    setSubmitted(true);
     fetchAnimalData();
-  }
+  };
 
   const fetchAnimalData = async () => {
     let petFinderSearchUrl = `https://api.petfinder.com/v2/animals?page=${page}&type=${searchType}`;
     if (selectedBreedType && animalTypes.includes(searchType)) {
-      petFinderSearchUrl += `&breed=${selectedBreedType}`
+      petFinderSearchUrl += `&breed=${selectedBreedType}`;
     }
     if (searchLocation.length > 0) {
-      petFinderSearchUrl += `&location=${searchLocation}`
+      petFinderSearchUrl += `&location=${searchLocation}`;
     }
 
     const options = {
@@ -107,13 +99,13 @@ const AnimalTypes = ({
         Authorization: `Bearer ${token}`,
       },
     };
-    
+
     const res = await fetch(petFinderSearchUrl, options);
     const content = await res.json();
     let animals = [];
     let animalContent = content["animals"];
-    let totalPages = content['pagination']['total_pages']
-    setTotalPages(totalPages)
+    let totalPages = content["pagination"]["total_pages"];
+    setTotalPages(totalPages);
 
     for (let i = 0; i < content["animals"].length; i++) {
       const animalContentIdx = animalContent[i];
@@ -151,9 +143,8 @@ const AnimalTypes = ({
     }
     setSearchContent(animals);
   };
- 
-  const breedInput = () => {
 
+  const breedInput = () => {
     if (animalTypes.includes(searchType)) {
       return (
         <select className="selector" onChange={handleSelectedBreedTypeChange}>
@@ -162,15 +153,20 @@ const AnimalTypes = ({
             return <option key={i}>{bl}</option>;
           })}
         </select>
-      )
+      );
     }
   };
-  
+
   return (
     <div>
-      <form onSubmit={handleSearchSubmit}>
-        <label className="labeler" htmlFor="animaltypes">choose an animal type</label>
-        <br></br>
+      <label className="labeler" htmlFor="animaltypes">
+        {searchType ? "get breeds!" : "choose an animal type"}
+      </label>
+      <form
+        id="animal-form"
+        className="labeler-form"
+        onSubmit={handleSearchSubmit}
+      >
         <select
           className="selector"
           id="animaltypes"
@@ -183,15 +179,21 @@ const AnimalTypes = ({
           })}
         </select>
         {breedInput()}
-
-        <select className='selector' value={searchLocation} onChange={handleLocationChange}>
+        <select
+          className="selector"
+          value={searchLocation}
+          onChange={handleLocationChange}
+        >
           <option></option>
           {statesAbbreviation.map((abb, i) => {
             return <option key={i}>{abb}</option>;
           })}
         </select>
-        <button className='search-buttons' type="submit">search for an animal near you!</button>
+        <br />
       </form>
+      <button className="search-buttons" type="submit" form="animal-form">
+        search for an animal near you!
+      </button>
     </div>
   );
 };

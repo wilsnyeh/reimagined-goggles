@@ -118,8 +118,21 @@ th, td {
 }
 
 .labeler {
+  display:flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top:10px;
   font-size: 20px;
 }
+.labeler-form {
+  display: flex;
+  align-items:flex-start;
+  justify-content: center;
+  height:auto;
+  padding: 0px;
+  margin:0px;
+}
+
 th, td {
   padding-left: 20px;
 }
@@ -194,9 +207,27 @@ th, td {
 }
 
 .search-buttons {
+  display: block;
   border: none;
   border-radius: 5px;
-  margin: 2px;
+  margin: 2px auto;
+  padding: 9px 10px;
+  color: white;
+  background: rgb(240, 183, 126);
+}
+
+.breeds-container {
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
+  /* height: 100vh; */
+  padding-top: 0px;
+}
+.breeds-search-btn {
+  display:flex;
+  border: none;
+  border-radius: 5px;
+  margin: 5px 0 0 0;
   padding: 8px 10px;
   color: white;
   background: rgb(240, 183, 126);

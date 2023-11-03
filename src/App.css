@@ -56,10 +56,10 @@ th, td {
   padding-left: 20px;
 }
 
+
 .table-img {
   border-radius: 50%;
 }
-
 /* MODALS  */
 
 .modal-table {
@@ -135,6 +135,7 @@ th, td {
   padding: 0px;
   margin:0px;
 }
+
 
 .video-background {
   position: fixed;

@@ -70,7 +70,7 @@ export default function AnimalTableDataMUI({
   ];
 
   const modalRows =
-  selectedAnimalDetail &&
+    selectedAnimalDetail &&
     selectedAnimalDetail.map((x, i) => {
       return {
         id: i,
@@ -80,19 +80,19 @@ export default function AnimalTableDataMUI({
         animalId: `${x.orgAnimalId ? `${x.orgAnimalId}` : "N/A"}`,
       };
     });
-    
-    const rows =
-      searchContent &&
-      searchContent.map((x, i) => {
-        return {
-          id: i,
-          animalName: `${x.name}`,
-          type: `${x.type}`,
-          animalBreed: `${x.breed} ${x.breed2 ? `${x.breed2}` : ""}`,
-          animalLocation: `${x.city} ${x.state}`,
-          photos: `${x.photo}`,
-        };
-      });
+
+  const rows =
+    searchContent &&
+    searchContent.map((x, i) => {
+      return {
+        id: i,
+        animalName: `${x.name}`,
+        type: `${x.type}`,
+        animalBreed: `${x.breed} ${x.breed2 ? `${x.breed2}` : ""}`,
+        animalLocation: `${x.city} ${x.state}`,
+        photos: `${x.photo}`,
+      };
+    });
 
   const columns = [
     {
@@ -123,7 +123,7 @@ export default function AnimalTableDataMUI({
             <img
               src={pawvector}
               width="relative"
-              height="100"
+              height="150"
               alt="vector of a pawprint"
             />
           );
@@ -206,20 +206,21 @@ export default function AnimalTableDataMUI({
                     />
                   ) : (
                     <img
+                      className="modal-img"
                       src={selectedAnimalDetail[0]["photo"]}
                       width="relative"
                       height="300"
                       alt="some real animals"
                     />
                   )}
-                  <DataGrid 
-                  rows={modalRows} 
-                  columns={modalCols}
-                  initialState={{
-                    pagination: { paginationModel: { pageSize: 1 } },
-                  }}
-                  pageSizeOptions={[1]}
-                   />
+                  <DataGrid
+                    rows={modalRows}
+                    columns={modalCols}
+                    initialState={{
+                      pagination: { paginationModel: { pageSize: 1 } },
+                    }}
+                    pageSizeOptions={[1]}
+                  />
                 </div>
               </Box>
             </>

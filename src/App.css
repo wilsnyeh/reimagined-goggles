@@ -262,3 +262,11 @@ th, td {
   margin: 2px;
   padding: 5px 15px;
 }
+
+/* LOADING MODULE */
+
+.loading-mod {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

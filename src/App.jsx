@@ -9,6 +9,7 @@ import { ReturnToLogin } from "./ReturnToLogin";
 import { TokenContext } from "./TokenContext";
 import AnimalTableDataMUI from "./AnimalTableDataMUI";
 import Pages from "./Pages";
+import LoadingModule from "./LoadingModule";
 
 
 function App({ fetchAnimalData }) {
@@ -25,6 +26,7 @@ function App({ fetchAnimalData }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAnimalDetail, setSelectedAnimalDetail] = useState(null);
   const [newName, setNewName] = useState("");
+  const [isLoading, setIsLoading] = useState(false)
 
   return (
     <>
@@ -60,16 +62,20 @@ function App({ fetchAnimalData }) {
                       setTotalPages={setTotalPages}
                       loggedIn={loggedIn}
                       setLoggedIn={setLoggedIn}
+                      isLoading={isLoading}
+                      setIsLoading={setIsLoading}
                     />
                     <BreedList
                       setBreedList={setBreedList}
                       searchType={searchType}
                     />
+                    {/* <LoadingModule/> */}
                     <Pages
                       page={page}
                       setPage={setPage}
                       totalPages={totalPages}
                       submitted={submitted}
+                      isLoading={isLoading}
                     />
                     <AnimalTableDataMUI
                       searchContent={searchContent}
@@ -80,6 +86,7 @@ function App({ fetchAnimalData }) {
                       selectedAnimalDetail={selectedAnimalDetail}
                       newName={newName}
                       setNewName={setNewName}
+                      isLoading={isLoading}
                     />
                   </>
                 ) : (

@@ -160,7 +160,7 @@ const AnimalTypes = ({
   return (
     <div>
       <label className="labeler" htmlFor="animaltypes">
-        {searchType ? "get breeds!" : "choose an animal type"}
+        {selectedBreedType? "find your furbaby!" : searchType ? "get breeds!" : "choose an animal type"}
       </label>
       <form
         id="animal-form"

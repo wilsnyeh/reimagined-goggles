@@ -34,6 +34,7 @@ const AnimalTypes = ({
   setIsLoading,
   setNothing,
   setIsLoved,
+
 }) => {
   const { token } = useContext(TokenContext);
 
@@ -152,6 +153,7 @@ const AnimalTypes = ({
     }
     setSearchContent(animals);
     setIsLoved(false);
+
     setNothing(false);
     setIsLoading(false);
   };

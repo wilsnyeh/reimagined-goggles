@@ -10,6 +10,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ReactLoading from "react-loading";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 
+
 export default function AnimalTableDataMUI({
   searchContent,
   setSearchContent,
@@ -23,6 +24,7 @@ export default function AnimalTableDataMUI({
   nothing,
   isLoved,
   setIsLoved,
+
 }) {
   const handleRowClick = (detail) => {
     const animalDeets = searchContent.filter(

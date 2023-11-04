@@ -13,6 +13,7 @@ import LoadingModule from "./LoadingModule";
 import IconsTesting from "./IconsTesting";
 
 
+
 function App({ fetchAnimalData }) {
   const { token } = useContext(TokenContext);
   const [searchType, setSearchType] = useState("");
@@ -71,6 +72,7 @@ function App({ fetchAnimalData }) {
                       setIsLoading={setIsLoading}
                       setNothing={setNothing}
                       setIsLoved={setIsLoved}
+
                     />
                     <BreedList
                       setBreedList={setBreedList}
@@ -97,6 +99,7 @@ function App({ fetchAnimalData }) {
                       nothing={nothing}
                       isLoved={isLoved}
                       setIsLoved={setIsLoved}
+
                     />
                   </>
                 ) : (

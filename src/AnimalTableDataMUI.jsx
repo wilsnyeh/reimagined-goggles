@@ -8,6 +8,8 @@ import ModalDialog from "@mui/joy/ModalDialog";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ReactLoading from "react-loading";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
+
 
 export default function AnimalTableDataMUI({
   searchContent,
@@ -20,6 +22,9 @@ export default function AnimalTableDataMUI({
   setNewName,
   isLoading,
   nothing,
+  isLoved,
+  setIsLoved,
+
 }) {
   const handleRowClick = (detail) => {
     const animalDeets = searchContent.filter(
@@ -33,9 +38,21 @@ export default function AnimalTableDataMUI({
     setIsModalOpen(false);
   };
 
-  const handleAnimalDelete = (id) => {
-    const newList = searchContent.filter((listitem, index) => index !== id);
-    setSearchContent(newList);
+  // const handleAnimalDelete = (id) => {
+  //   const newList = searchContent.filter((listitem, index) => index !== id);
+  //   setSearchContent(newList);
+  // };
+
+  const handleAnimalPick = (id) => {
+    setIsLoved((animals) => {
+      if (animals[id]) {
+        const newAnimals = { ...animals };
+        delete newAnimals[id];
+        return newAnimals
+      } else {
+        return {...animals, [id]: true}
+      }
+    })
   };
 
   const style = {
@@ -144,7 +161,7 @@ export default function AnimalTableDataMUI({
     {
       field: "animalDetails",
       headerName: "Animal Details",
-      width: 100,
+      width: 125,
       renderCell: (params) => {
         return (
           <Button
@@ -157,19 +174,19 @@ export default function AnimalTableDataMUI({
       },
     },
     {
-      field: "delete",
-      headerName: "Delete",
+      field: "pickMe",
+      headerName: "Pick Me!",
       sortable: false,
       width: 125,
       renderCell: (params) => {
         return (
           <Button
-            variant="outlined"
-            color="error"
-            startIcon={<DeleteIcon />}
-            onClick={() => handleAnimalDelete(params.row.id)}
+            onClick={() => handleAnimalPick(params.row.id)}
           >
-            Delete
+            {isLoved
+            ?  <BsHeartFill style={{color:'red', fontSize:"24px"}}/>
+            : <BsHeart style={{color:'red', fontSize:'24px'}}/>
+            }
           </Button>
         );
       },

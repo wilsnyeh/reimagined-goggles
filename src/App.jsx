@@ -10,6 +10,7 @@ import { TokenContext } from "./TokenContext";
 import AnimalTableDataMUI from "./AnimalTableDataMUI";
 import Pages from "./Pages";
 import LoadingModule from "./LoadingModule";
+import IconsTesting from "./IconsTesting";
 
 
 function App({ fetchAnimalData }) {
@@ -27,8 +28,9 @@ function App({ fetchAnimalData }) {
   const [selectedAnimalDetail, setSelectedAnimalDetail] = useState(null);
   const [newName, setNewName] = useState("");
   const [isLoading, setIsLoading] = useState(false)
-  const [isLoved, setIsLoved] = useState(false)
+  const [isLoved, setIsLoved] = useState({})
   const [nothing, setNothing] = useState(true)
+
 
   return (
     <>
@@ -47,6 +49,7 @@ function App({ fetchAnimalData }) {
                 {token ? (
                   <>
                     <Logout loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+                    {/* <IconsTesting/> */}
                     <AnimalTypes
                       searchType={searchType}
                       setSearchType={setSearchType}
@@ -67,6 +70,7 @@ function App({ fetchAnimalData }) {
                       isLoading={isLoading}
                       setIsLoading={setIsLoading}
                       setNothing={setNothing}
+                      setIsLoved={setIsLoved}
                     />
                     <BreedList
                       setBreedList={setBreedList}
@@ -91,6 +95,8 @@ function App({ fetchAnimalData }) {
                       setNewName={setNewName}
                       isLoading={isLoading}
                       nothing={nothing}
+                      isLoved={isLoved}
+                      setIsLoved={setIsLoved}
                     />
                   </>
                 ) : (

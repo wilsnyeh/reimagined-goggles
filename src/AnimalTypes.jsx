@@ -33,6 +33,7 @@ const AnimalTypes = ({
   setSubmitted,
   setIsLoading,
   setNothing,
+  setIsLoved,
 }) => {
   const { token } = useContext(TokenContext);
 
@@ -150,6 +151,7 @@ const AnimalTypes = ({
       animals.push(animal);
     }
     setSearchContent(animals);
+    setIsLoved(false);
     setNothing(false);
     setIsLoading(false);
   };

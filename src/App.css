@@ -136,7 +136,6 @@ th, td {
   margin:0px;
 }
 
-
 .video-background {
   position: fixed;
   top: 25%;
@@ -217,7 +216,6 @@ th, td {
 }
 
 .search-buttons {
-
   font-size: 16px;
   display: block;
   border: none;
@@ -234,17 +232,14 @@ th, td {
   display:flex;
   justify-content: center;
   align-items: flex-start;
-  /* height: 100vh; */
   padding-top: 0px;
 }
 .breeds-search-btn {
-
   font-size: 16px;
   display:flex;
   border: none;
   border-radius: 5px;
   margin: 2px 0 10px 0;
-
   padding: 8px 10px;
   color: white;
   background: rgb(240, 183, 126);

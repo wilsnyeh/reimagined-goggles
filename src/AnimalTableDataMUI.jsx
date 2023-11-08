@@ -6,9 +6,9 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import ModalDialog from "@mui/joy/ModalDialog";
 import Button from "@mui/material/Button";
-import DeleteIcon from "@mui/icons-material/Delete";
 import ReactLoading from "react-loading";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
+
 
 export default function AnimalTableDataMUI({
   searchContent,
@@ -23,6 +23,7 @@ export default function AnimalTableDataMUI({
   nothing,
   isLoved,
   setIsLoved,
+
 }) {
   const handleRowClick = (detail) => {
     const animalDeets = searchContent.filter(

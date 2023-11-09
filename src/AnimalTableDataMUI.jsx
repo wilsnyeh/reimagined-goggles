@@ -12,13 +12,10 @@ import { BsHeart, BsHeartFill } from "react-icons/bs";
 
 export default function AnimalTableDataMUI({
   searchContent,
-  setSearchContent,
   setSelectedAnimalDetail,
   selectedAnimalDetail,
   setIsModalOpen,
   isModalOpen,
-  newName,
-  setNewName,
   isLoading,
   nothing,
   isLoved,

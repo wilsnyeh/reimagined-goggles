@@ -9,9 +9,9 @@ import Button from "@mui/material/Button";
 import ReactLoading from "react-loading";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 
-
 export default function AnimalTableDataMUI({
   searchContent,
+  setSearchContent,
   setSelectedAnimalDetail,
   selectedAnimalDetail,
   setIsModalOpen,
@@ -20,7 +20,6 @@ export default function AnimalTableDataMUI({
   nothing,
   isLoved,
   setIsLoved,
-
 }) {
   const handleRowClick = (detail) => {
     const animalDeets = searchContent.filter(
@@ -39,16 +38,18 @@ export default function AnimalTableDataMUI({
   //   setSearchContent(newList);
   // };
 
+  // const handleAnimalPick = (id) => {
+  //   setIsLoved((animals) => {
+  //     return animals === id ? null : id;
+  //   })
+  // };
+
   const handleAnimalPick = (id) => {
-    setIsLoved((animals) => {
-      if (animals[id]) {
-        const newAnimals = { ...animals };
-        delete newAnimals[id];
-        return newAnimals
-      } else {
-        return {...animals, [id]: true}
-      }
-    })
+    setSearchContent((currentSearchContent) =>
+      currentSearchContent.map((animal) =>
+        animal.id === id ? { ...animal, isLoved: !animal.isLoved } : animal
+      )
+    );
   };
 
   const style = {
@@ -176,13 +177,12 @@ export default function AnimalTableDataMUI({
       width: 125,
       renderCell: (params) => {
         return (
-          <Button
-            onClick={() => handleAnimalPick(params.row.id)}
-          >
-            {isLoved
-            ?  <BsHeartFill style={{color:'red', fontSize:"24px"}}/>
-            : <BsHeart style={{color:'red', fontSize:'24px'}}/>
-            }
+          <Button onClick={() => handleAnimalPick(params.row.id)}>
+            {params.row.isLoved ? (
+              <BsHeartFill style={{ color: "red", fontSize: "24px" }} />
+            ) : (
+              <BsHeart style={{ color: "red", fontSize: "24px" }} />
+            )}
           </Button>
         );
       },

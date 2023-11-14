@@ -147,13 +147,11 @@ const AnimalTypes = ({
         orgAnimalId: organizationAnimalId,
         email: organizationEmail,
         phone: organizationPhone,
-        isLoved: false,
       };
 
       animals.push(animal);
     }
     setSearchContent(animals);
-    // setIsLoved(false);
     setNothing(false);
     setIsLoading(false);
   };

@@ -66,7 +66,6 @@ const AnimalTypes = ({
       return;
     }
     setPage(1);
-    // setSelectedBreedType("")
     fetchAnimalData();
   }, [selectedBreedType]);
   // this resets the page, breedtype, and breedlist, when searchtype is changed

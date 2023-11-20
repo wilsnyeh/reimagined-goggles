@@ -6,20 +6,15 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { TokenProvider } from "./TokenContext";
 
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    {/* <StyledEngineProvider injectFirst> */}
-      {/* <CssVarsProvider> */}
-        <TokenProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </TokenProvider>
-      {/* </CssVarsProvider> */}
-    {/* </StyledEngineProvider> */}
+    <TokenProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </TokenProvider>
   </React.StrictMode>
 );
 

@@ -203,7 +203,7 @@ const AnimalTypes = ({
         <br />
       </form>
       <button className="search-buttons" type="submit" form="animal-form">
-        search for an animal near you!
+        search for an animal near you
       </button>
     </div>
   );

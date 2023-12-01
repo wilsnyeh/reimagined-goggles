@@ -78,7 +78,6 @@ function App({ fetchAnimalData }) {
                       setBreedList={setBreedList}
                       searchType={searchType}
                     />
-                    {/* <LoadingModule/> */}
                     <Pages
                       page={page}
                       setPage={setPage}

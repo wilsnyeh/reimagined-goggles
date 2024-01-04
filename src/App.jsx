@@ -9,8 +9,6 @@ import { ReturnToLogin } from "./ReturnToLogin";
 import { TokenContext } from "./TokenContext";
 import AnimalTableDataMUI from "./AnimalTableDataMUI";
 import Pages from "./Pages";
-import LoadingModule from "./LoadingModule";
-import IconsTesting from "./IconsTesting";
 
 
 
